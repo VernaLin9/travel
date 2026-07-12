@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名古屋夏日之旅 9天8夜｜防暑版行程</title>
+<meta name="description" content="名古屋9天8夜夏季行程：卡片／時間軸／表格三種檢視、防暑對策、室內備案、列印版。">
+<style>
+:root{
+  --ink:#1f2a37;
+  --ink-soft:#51606f;
+  --paper:#f7f9fb;
+  --card:#ffffff;
+  --line:#e3e9ef;
+  --brand:#0f766e;
+  --brand-soft:#e6f4f2;
+  --accent:#f59e0b;
+  --accent-soft:#fef3e2;
+  --danger:#dc2626;
+  --danger-soft:#fdeaea;
+  --cool:#2563eb;
+  --cool-soft:#e8effc;
+  --radius:14px;
+  --shadow:0 1px 3px rgba(31,42,55,.08),0 6px 18px rgba(31,42,55,.06);
+  --font:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+
+/* ---------- Hero ---------- */
+.hero{background:linear-gradient(135deg,#134e4a 0%,#0f766e 45%,#0d9488 100%);color:#fff;padding:34px 20px 92px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(253,224,71,.35),transparent 65%)}
+.hero-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
+.hero .kicker{font-size:.82rem;letter-spacing:.35em;opacity:.85;margin-bottom:8px}
+.hero h1{font-size:clamp(1.5rem,4.2vw,2.4rem);font-weight:900;letter-spacing:.04em}
+.hero p.sub{margin-top:10px;font-size:clamp(.9rem,2.4vw,1.02rem);opacity:.92;max-width:620px}
+.weather-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.weather-chip{background:rgba(255,255,255,.14);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-size:.82rem}
+.weather-chip b{color:#fde047}
+
+/* ---------- Nav tabs ---------- */
+.navbar{max-width:1060px;margin:-52px auto 0;padding:0 16px;position:relative;z-index:2}
+.nav-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tab-btn{flex:1 1 auto;min-width:96px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 8px;font-family:var(--font);font-size:.9rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:.18s;text-align:center}
+.tab-btn:hover{border-color:var(--brand);color:var(--brand)}
+.tab-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.print-btn{flex:0 0 auto;border:none;background:var(--accent);color:#fff;border-radius:10px;padding:10px 16px;font-family:var(--font);font-size:.9rem;font-weight:700;cursor:pointer}
+.print-btn:hover{filter:brightness(1.06)}
+
+main{max-width:1060px;margin:0 auto;padding:26px 16px 70px}
+section.panel{display:none;animation:fadein .25s ease}
+section.panel.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+h2.sec-title{font-size:1.3rem;font-weight:900;margin:6px 0 4px;display:flex;align-items:center;gap:10px}
+h2.sec-title .bar{width:6px;height:24px;border-radius:3px;background:var(--brand);display:inline-block}
+p.sec-sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:18px}
+
+/* ---------- View switcher ---------- */
+.view-switch{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;margin:4px 0 20px;box-shadow:var(--shadow)}
+.view-switch button{border:none;background:transparent;font-family:var(--font);font-size:.85rem;font-weight:700;color:var(--ink-soft);padding:8px 18px;border-radius:999px;cursor:pointer;transition:.15s}
+.view-switch button.active{background:var(--ink);color:#fff}
+
+/* ---------- Heat badge ---------- */
+.heat{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:800;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.heat.h1{background:var(--cool-soft);color:var(--cool)}
+.heat.h2{background:#e7f6ec;color:#15803d}
+.heat.h3{background:var(--accent-soft);color:#b45309}
+.heat.h4{background:#fdeee2;color:#c2410c}
+.heat.h5{background:var(--danger-soft);color:var(--danger)}
+
+/* ---------- Card view ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.day-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line)}
+.day-card .art{height:150px;position:relative}
+.day-card .art svg{width:100%;height:100%}
+.day-num{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);border-radius:10px;padding:4px 12px;font-weight:900;font-size:.85rem;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.day-heat{position:absolute;top:12px;right:12px}
+.day-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.day-body h3{font-size:1.08rem;font-weight:900}
+.day-body .meta{display:flex;flex-direction:column;gap:5px;font-size:.85rem;color:var(--ink-soft)}
+.meta-row{display:flex;gap:8px}
+.meta-row .ico{flex:0 0 auto;width:1.3em;text-align:center}
+.tip-box{background:var(--brand-soft);border-left:4px solid var(--brand);border-radius:8px;padding:9px 12px;font-size:.83rem}
+.tip-box b{color:var(--brand)}
+.backup-box{background:var(--cool-soft);border-left:4px solid var(--cool);border-radius:8px;padding:9px 12px;font-size:.83rem}
+.backup-box b{color:var(--cool)}
+
+/* ---------- Timeline view ---------- */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;border-radius:2px;background:linear-gradient(#0d9488,#f59e0b,#dc2626,#f59e0b,#0d9488)}
+.tl-day{position:relative;margin-bottom:26px}
+.tl-day::before{content:"";position:absolute;left:-24px;top:10px;width:15px;height:15px;border-radius:50%;background:#fff;border:4px solid var(--brand)}
+.tl-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.tl-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
+.tl-head .d{font-weight:900;font-size:1.02rem}
+.tl-head .w{color:var(--ink-soft);font-size:.85rem}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.slot{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.84rem;background:#fbfcfd}
+.slot .slot-t{font-weight:800;font-size:.78rem;display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.slot.morning .slot-t{color:#0369a1}
+.slot.noon .slot-t{color:var(--danger)}
+.slot.evening .slot-t{color:#7c3aed}
+.tl-foot{margin-top:10px;font-size:.82rem;color:var(--ink-soft)}
+
+/* ---------- Table view ---------- */
+.table-wrap{overflow-x:auto;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
+table.trip{border-collapse:collapse;width:100%;min-width:860px;font-size:.85rem}
+table.trip th{background:var(--ink);color:#fff;padding:10px 12px;text-align:left;white-space:nowrap;font-weight:700}
+table.trip td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.trip tr:nth-child(even) td{background:#f6f9fa}
+table.trip td.day-cell{font-weight:900;white-space:nowrap}
+
+/* ---------- Heat strategy panel ---------- */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:26px}
+.s-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+.s-card h3{font-size:1rem;font-weight:900;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.s-card ul{list-style:none;font-size:.87rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:7px}
+.s-card li{padding-left:1.2em;position:relative}
+.s-card li::before{content:"›";position:absolute;left:0;color:var(--brand);font-weight:900}
+.timebar{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:26px}
+.timebar h3{font-size:1rem;font-weight:900;margin-bottom:12px}
+.tb-track{display:flex;border-radius:9px;overflow:hidden;font-size:.72rem;color:#fff;text-align:center;font-weight:700}
+.tb-seg{padding:9px 2px}
+.tb-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink-soft);margin-top:5px}
+.alert-card{background:var(--danger-soft);border:1px solid #f5c8c8;border-radius:var(--radius);padding:16px 18px;font-size:.87rem;margin-bottom:26px}
+.alert-card b{color:var(--danger)}
+
+/* ---------- Backup / indoor list ---------- */
+.backup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.b-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.b-card h3{font-size:.98rem;font-weight:900;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.b-card .where{font-size:.78rem;color:var(--brand);font-weight:700;margin-bottom:6px}
+.b-card p{font-size:.85rem;color:var(--ink-soft)}
+.b-card .fit{margin-top:8px;font-size:.78rem;background:var(--brand-soft);color:var(--brand);font-weight:700;border-radius:8px;padding:4px 10px;display:inline-block}
+
+/* ---------- Food ---------- */
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.f-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.f-card h3{font-size:.98rem;font-weight:900;margin-bottom:4px}
+.f-card .kind{font-size:.78rem;color:var(--accent);font-weight:800;margin-bottom:6px}
+.f-card p{font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center;color:var(--ink-soft);font-size:.8rem}
+
+/* ---------- Mobile ---------- */
+@media (max-width:640px){
+  .hero{padding:26px 18px 84px}
+  .tab-btn{min-width:calc(50% - 8px);font-size:.85rem}
+  .print-btn{width:100%}
+  .grid{grid-template-columns:1fr}
+  .slots{grid-template-columns:1fr}
+  .view-switch{width:100%;justify-content:space-between}
+  .view-switch button{flex:1;padding:8px 6px}
+}
+
+/* ---------- Print ---------- */
+.print-only{display:none}
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:11px;color:#000}
+  .hero,.navbar,main,footer,.view-switch{display:none !important}
+  .print-only{display:block;font-family:var(--font)}
+  .p-head{text-align:center;border-bottom:2.5px solid #0f766e;padding-bottom:8px;margin-bottom:12px}
+  .p-head h1{font-size:17px;letter-spacing:.06em}
+  .p-head p{font-size:10px;color:#333;margin-top:3px}
+  table.p-table{width:100%;border-collapse:collapse;font-size:9.5px;margin-bottom:14px}
+  table.p-table th{background:#0f766e;color:#fff;padding:5px 6px;text-align:left;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table.p-table td{border:1px solid #bbb;padding:5px 6px;vertical-align:top}
+  .p-sec{margin-bottom:12px;break-inside:avoid}
+  .p-sec h2{font-size:12.5px;border-left:4px solid #0f766e;padding-left:7px;margin-bottom:6px}
+  .p-cols{display:flex;gap:14px}
+  .p-cols>div{flex:1}
+  .p-sec ul{margin-left:14px;font-size:9.5px;line-height:1.55}
+  .p-note{font-size:8.5px;color:#555;margin-top:10px;border-top:1px solid #ccc;padding-top:6px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">NAGOYA・SUMMER FAMILY TRIP</div>
+    <h1>名古屋夏日之旅 9天8夜 <span style="font-size:.6em;font-weight:700;opacity:.85">防暑調整版</span></h1>
+    <p class="sub">榮商圈・名古屋城・大須・樂高樂園・水族館・犬山城・FLIGHT OF DREAMS。以「戶外趁早晚、正午躲室內」原則重排的夏季行程。</p>
+    <div class="weather-strip">
+      <span class="weather-chip">7月均溫 <b>23–31°C</b></span>
+      <span class="weather-chip">8月均溫 <b>24–33°C</b></span>
+      <span class="weather-chip">濕度 <b>70–75%</b>・體感常破 <b>38°C</b></span>
+      <span class="weather-chip">近年常見 <b>35°C+ 猛暑日</b></span>
+      <span class="weather-chip">日落約 <b>19:00</b></span>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="nav-card">
+    <button class="tab-btn active" data-tab="itinerary">📅 每日行程</button>
+    <button class="tab-btn" data-tab="strategy">🌡️ 防暑對策</button>
+    <button class="tab-btn" data-tab="backup">🏛️ 室內備案</button>
+    <button class="tab-btn" data-tab="food">🍤 美食清單</button>
+    <button class="print-btn" onclick="window.print()">🖨️ 列印版</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ================= 每日行程 ================= -->
+<section class="panel active" id="panel-itinerary">
+  <h2 class="sec-title"><span class="bar"></span>每日行程</h2>
+  <p class="sec-sub">三種檢視方式：<b>卡片</b>看重點、<b>時間軸</b>看一天怎麼排（含防暑時段）、<b>表格</b>總覽比對。</p>
+  <div class="view-switch" role="tablist">
+    <button class="active" data-view="cards">🗂️ 卡片</button>
+    <button data-view="timeline">🕘 時間軸</button>
+    <button data-view="table">📋 表格</button>
+  </div>
+  <div id="view-cards"></div>
+  <div id="view-timeline" style="display:none"></div>
+  <div id="view-table" style="display:none"></div>
+</section>
+
+<!-- ================= 防暑對策 ================= -->
+<section class="panel" id="panel-strategy">
+  <h2 class="sec-title"><span class="bar"></span>防暑總對策</h2>
+  <p class="sec-sub">名古屋是日本數一數二悶熱的大城市，夏季重點不是「去哪」，而是「幾點去」。</p>
+
+  <div class="timebar">
+    <h3>☀️ 一日熱度時段表（安排原則）</h3>
+    <div class="tb-track">
+      <div class="tb-seg" style="flex:2;background:#38bdf8">早晨戶外<br>黃金時段</div>
+      <div class="tb-seg" style="flex:1;background:#fbbf24">漸熱</div>
+      <div class="tb-seg" style="flex:3;background:#ef4444">危險時段<br>務必室內</div>
+      <div class="tb-seg" style="flex:1.5;background:#fb923c">趨緩</div>
+      <div class="tb-seg" style="flex:2;background:#8b5cf6">傍晚戶外<br>第二時段</div>
+    </div>
+    <div class="tb-labels"><span>7:00</span><span>10:00</span><span>11:00</span><span>15:00</span><span>17:00</span><span>20:00</span></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin-top:10px">戶外景點（名古屋城、犬山城、樂高樂園）一律 <b>9:00 開門就進場</b>，11 點前完成重頭戲；11:00–16:00 進商場、博物館、地下街或回飯店午休；17:00 後再出門，日落 19 點左右，傍晚還有兩小時舒適時段。</p>
+  </div>
+
+  <div class="strategy-grid">
+    <div class="s-card">
+      <h3>🎒 必帶裝備</h3>
+      <ul>
+        <li>手持風扇（或頸掛式）＋涼感巾</li>
+        <li>鹽分補給糖（塩分タブレット，日本藥妝店有售）</li>
+        <li>遮陽傘／帽（日本夏天男女都撐傘）</li>
+        <li>每人水壺（自動販賣機到處都有，隨時補水）</li>
+        <li>防曬乳、涼感濕紙巾、替換衣物（尤其小孩）</li>
+        <li>降溫噴霧（冷却スプレー），噴衣服立刻涼</li>
+      </ul>
+    </div>
+    <div class="s-card">
+      <h3>🚇 移動守則</h3>
+      <ul>
+        <li>榮、名古屋站有大型地下街網絡，轉乘、逛街、吃飯都能不曬太陽</li>
+        <li>短程寧可搭一站地鐵，不要在大太陽下走 15 分鐘</li>
+        <li>公車、地鐵都有冷氣，等車找有遮蔭的站牌</li>
+        <li>中午回飯店午休不是浪費，是夏季日本旅遊標配</li>
+      </ul>
+    </div>
+    <div class="s-card">
+      <h3>🧊 每日節奏</h3>
+      <ul>
+        <li>早餐吃飽提早出門，9 點前抵達戶外景點</li>
+        <li>11:00–16:00：商場／博物館／飯店午休三選一</li>
+        <li>傍晚 17:00 後安排第二個景點或逛街</li>
+        <li>晚餐後散步剛好看夜景（電視塔、綠洲21）</li>
+        <li>每天只排一個「戶外重點」，其他都排室內</li>
+      </ul>
+    </div>
+    <div class="s-card">
+      <h3>🌦️ 天氣風險</h3>
+      <ul>
+        <li>7 月中旬前可能碰到梅雨尾巴，午後雷陣雨機率高</li>
+        <li>8 月留意颱風動態，出發前一週開始追蹤</li>
+        <li>雷陣雨後濕度更高更悶，室內備案要隨時可啟動</li>
+        <li>樂高樂園部分設施雨天暫停，查好當日天氣再決定順序</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert-card">
+    <b>⚠️ 中暑警訊（帶小孩特別注意）：</b>頭暈、噁心、臉色發紅但不流汗、走路不穩、講話反應變慢。出現任一症狀立刻進冷氣房、補水補鹽、脖子腋下降溫；意識不清直撥 <b>119</b>。日本環境省中暑警戒資訊（暑さ指数 WBGT）可在出發後每天早上查看當日警戒等級。
+  </div>
+
+  <h2 class="sec-title"><span class="bar"></span>逐日防暑重點</h2>
+  <p class="sec-sub">每天一句話記住重點。</p>
+  <div class="table-wrap">
+    <table class="trip" id="heat-table" style="min-width:640px"></table>
+  </div>
+</section>
+
+<!-- ================= 室內備案 ================= -->
+<section class="panel" id="panel-backup">
+  <h2 class="sec-title"><span class="bar"></span>室內備案雷達</h2>
+  <p class="sec-sub">猛暑日（35°C+）或午後雷雨時，直接抽換行程用。全部都有冷氣。</p>
+  <div class="backup-grid" id="backup-grid"></div>
+</section>
+
+<!-- ================= 美食 ================= -->
+<section class="panel" id="panel-food">
+  <h2 class="sec-title"><span class="bar"></span>美食清單</h2>
+  <p class="sec-sub">名古屋名物制霸。夏天中午排隊耗體力，熱門店建議開店前 15 分鐘到，或錯峰 13:30 後。</p>
+  <div class="food-grid" id="food-grid"></div>
+</section>
+
+</main>
+
+<footer>
+  名古屋夏日之旅・防暑調整版｜戶外趁早晚、正午躲室內 ☀️→🏛️→🌆
+</footer>
+
+<!-- ================= 列印版 ================= -->
+<div class="print-only" id="print-area"></div>
+
+<script>
+/* ================= 資料 ================= */
+const DAYS=[
+{d:1,w:"週五",title:"抵達名古屋・榮商圈",spot:"中部國際機場 → 榮商圈",hotel:"Vessel Inn 榮站前",heat:1,
+ art:"plane",
+ meals:"午餐：海老どて食堂（機場 4F 就有分店，抵達直接吃）",
+ traffic:"名鐵機場特急 μ-SKY 約 28 分到名古屋站，轉地鐵至榮",
+ morning:"班機抵達中部國際機場，機場內吃海老どて食堂炸蝦",
+ noon:"名鐵進市區（全程冷氣），榮站前飯店 check-in、放行李午休",
+ evening:"傍晚逛榮地下街（森之地下街）與商圈，全程幾乎不用曬太陽",
+ tip:"抵達日行程全在室內動線，是最不怕熱的一天。趁機到藥妝店補齊防暑裝備：鹽糖、涼感巾、降溫噴霧。",
+ backup:"不需要——本日即室內動線。"},
+{d:2,w:"週六",title:"綠洲21・名古屋電視塔",spot:"綠洲21購物中心＋中部電力 MIRAI TOWER",hotel:"Vessel Inn 榮站前",heat:2,
+ art:"tower",
+ meals:"甜點：HARBS 榮本店（水果千層蛋糕，走路可到）",
+ traffic:"飯店步行即達，全區有地下街連通",
+ morning:"睡飽吃飯店早餐，上午逛綠洲21商場（室內）",
+ noon:"HARBS 吃蛋糕吹冷氣，地下街繼續逛",
+ evening:"17:30 後上電視塔展望台，看夕陽轉夜景（日落約 19:00），水之宇宙船夜間點燈",
+ tip:"電視塔展望台改到傍晚！白天上去又熱又刺眼，傍晚一次收集夕陽＋夜景，票價相同。",
+ backup:"名古屋市科學館（白天場次），傍晚再回來上塔。"},
+{d:3,w:"週日",title:"名古屋城",spot:"名古屋城・本丸御殿・金鯱橫丁",hotel:"Vessel Inn 榮站前",heat:4,
+ art:"castle",
+ meals:"午餐：金鯱橫丁（城旁美食街，有冷氣店家）",
+ traffic:"飯店門口公車站搭兩站即達",
+ morning:"9:00 開門即進城！先看戶外天守外觀、拍照，再進本丸御殿（有空調）慢慢看",
+ noon:"金鯱橫丁吃午餐，12:30 前撤退回飯店午休",
+ evening:"傍晚逛榮商圈或地下街，晚餐後散步",
+ tip:"名古屋城腹地大、遮蔭少，是本行程前段最熱的一天。務必 9 點衝第一批，順序「先戶外後室內」：戶外拍照 → 本丸御殿吹冷氣。天守閣目前不開放登閣，外觀拍照即可，不用留太久。",
+ backup:"德川園＋德川美術館（美術館室內），或豐田產業技術紀念館。"},
+{d:4,w:"週一",title:"大須商店街・觀音寺",spot:"大須觀音＋大須商店街",hotel:"Vessel Inn 榮站前",heat:2,
+ art:"arcade",
+ meals:"商店街小吃巡禮：炸雞、鯛魚燒、水果飴、刨冰",
+ traffic:"地鐵鶴舞線大須觀音站，出站即達",
+ morning:"上午先參拜大須觀音（戶外停留短），之後鑽進商店街拱廊",
+ noon:"拱廊有頂遮蔭＋兩側店家冷氣，中午照常逛沒問題，熱了就進店",
+ evening:"回榮休息，傍晚自由活動",
+ tip:"大須拱廊商店街是夏天友善景點：有屋頂、店家密集、隨時能躲冷氣，還有很多冰品。招財貓廣場記得拍照。",
+ backup:"本身就是備案等級的景點，遇雨也照逛。"},
+{d:5,w:"週二",title:"樂高樂園 Day 1",spot:"LEGOLAND Japan",hotel:"樂高樂園飯店（就在園區門口）",heat:5,
+ art:"lego",
+ meals:"園內午餐或 Maker's Pier 餐廳",
+ traffic:"青波線（あおなみ線）終點金城埠頭站",
+ morning:"開園即入場！先衝熱門設施（上午排隊最短、太陽最小）",
+ noon:"11:30–15:00 離園回樂高飯店午休——飯店就在門口，這是住這裡最大優勢！門票可當日再入場",
+ evening:"15:30 後回園區玩水區（Splash 區帶換洗衣物）與剩餘設施，待到閉園",
+ tip:"樂高樂園幾乎全戶外，是全程最熱風險日。「上午衝＋回飯店午休＋傍晚再戰」三段式是夏天唯一解。水設施排中午後玩，濕了剛好消暑。",
+ backup:"SEA LIFE 名古屋（樂高門口旁的室內水族館，小而美）。"},
+{d:6,w:"週三",title:"樂高樂園 Day 2",spot:"LEGOLAND Japan（第二日）",hotel:"樂高樂園飯店",heat:5,
+ art:"lego2",
+ meals:"飯店早餐 07:30–10:30（已預約）",
+ traffic:"住園區門口，零通勤",
+ morning:"補玩 Day 1 沒玩到的設施，或重刷小孩最愛",
+ noon:"回飯店午休，或改去磁浮鐵道館（金城埠頭站旁，走路可到，室內冷氣超強）",
+ evening:"傍晚回園或逛 Maker's Pier，晚上飯店內設施",
+ tip:"第二天彈性大：如果前一天太累或當天是猛暑日，白天直接改磁浮鐵道館（超多實車＋新幹線模擬駕駛，小孩通常比樂高還買單），傍晚再進園。",
+ backup:"リニア・鉄道館 磁浮鐵道館（走路可到）＋ Maker's Pier。"},
+{d:7,w:"週四",title:"名古屋港水族館",spot:"名古屋港水族館",hotel:"名古屋 JR 門樓酒店（JR Gate Tower Hotel）",heat:1,
+ art:"orca",
+ meals:"飯店早餐 07:30–10:30；晚餐：名古屋站周邊（JR Gate Tower 樓下就是美食樓層）",
+ traffic:"地鐵名港線名古屋港站；之後回名古屋站換飯店",
+ morning:"退房寄行李，前往水族館，先看虎鯨、白鯨餵食時間表",
+ noon:"整天室內冷氣！海豚表演場有遮蔭座位區，完美避暑日",
+ evening:"回名古屋站 check-in 門樓酒店，站內商場晚餐",
+ tip:"水族館是夏季完美行程，不用調整。唯一注意：海豚表演露天看台選上層遮蔭區，正午場次太陽大。",
+ backup:"不需要——本日即避暑行程。"},
+{d:8,w:"週五",title:"犬山城",spot:"國寶犬山城＋城下町老街",hotel:"名古屋 JR 門樓酒店",heat:4,
+ art:"inuyama",
+ meals:"飯店早餐 07:00–10:00；城下町：醬油糰子、田樂、戀愛甜點串",
+ traffic:"名鐵犬山線約 30 分，犬山遊園站下車",
+ morning:"一早出發，9:00 登城（天守內無冷氣、要脫鞋爬陡梯，趁早涼快人少）",
+ noon:"城下町老街邊走邊吃，熱了進店吹冷氣吃冰，13:00 前搭車回名古屋",
+ evening:"名古屋站商圈逛街，或回飯店休息，晚餐吃あつた蓬莱軒鰻魚飯（松坂屋店）",
+ tip:"犬山城天守是木造國寶、沒有冷氣，正午進去像蒸籠。一定要一早去：9 點登城涼快、視野又好。下午行程果斷收回名古屋市區。",
+ backup:"豐田產業技術紀念館或名古屋市科學館（皆室內）。"},
+{d:9,w:"週六",title:"FLIGHT OF DREAMS・回程",spot:"波音 787 飛行博物館（中部機場）",hotel:"—（回程）",heat:1,
+ art:"b787",
+ meals:"早餐 06:30–10:00；午餐：海老どて食堂；晚餐候選：世界の山ちゃん炸雞翅 or MARUYA 本店鰻魚飯（皆機場有店）",
+ traffic:"名鐵直達中部國際機場，博物館就在機場內",
+ morning:"退房搭名鐵到機場，行李寄放或先掛",
+ noon:"FLIGHT OF DREAMS 看波音 787 實機（全室內），逛機場商店街買伴手禮",
+ evening:"機場晚餐後搭機返台",
+ tip:"完美收尾日：博物館、餐廳、伴手禮全在機場室內完成，零防暑壓力。名古屋名物最後總複習：炸蝦、雞翅、鰻魚飯都能在機場補完。",
+ backup:"不需要——全程室內。"}
+];
+
+const BACKUPS=[
+{name:"名古屋市科學館",where:"伏見站（榮旁一站）",desc:"世界最大球形天象儀，理工系親子聖地，極光劇場、龍捲風實驗超好看。",fit:"替代：名古屋城日／犬山城日／任何猛暑日",ico:"🔭"},
+{name:"リニア・鉄道館 磁浮鐵道館",where:"金城埠頭站（樂高樂園旁）",desc:"JR 東海鐵道博物館：新幹線、磁浮實車展示＋駕駛模擬器，小孩瘋掉等級。",fit:"樂高樂園日的中午避暑首選（走路可到）",ico:"🚄"},
+{name:"豐田產業技術紀念館",where:"名古屋站步行/名鐵一站",desc:"從紡織機到汽車的百年工藝，實機演示多、互動性高，大人小孩都看得入迷。",fit:"替代：任何市區日",ico:"⚙️"},
+{name:"德川園＋德川美術館",where:"大曾根站",desc:"美術館看國寶刀劍與源氏物語繪卷（室內），庭園傍晚再逛。",fit:"替代：名古屋城日（同樣有歷史感）",ico:"🏯"},
+{name:"SEA LIFE 名古屋",where:"金城埠頭站（樂高門口旁）",desc:"樂高主題小型水族館，1–1.5 小時剛好，和樂高門票有套票。",fit:"樂高樂園日的快速避暑點",ico:"🐠"},
+{name:"JR Gate Tower／名站地下街",where:"名古屋站",desc:"高島屋、Gate Tower Mall、驚安殿堂與巨大地下街網絡，吃逛買一條龍不見天日。",fit:"任何下午的萬用避暑點",ico:"🛍️"},
+{name:"榮地下街＋綠洲21",where:"榮站",desc:"住宿樓下的避暑主場：森之地下街、Central Park 地下街、綠洲21。",fit:"住榮期間每天傍晚前的緩衝",ico:"🌳"},
+{name:"松坂屋名古屋店",where:"矢場町站",desc:"老牌百貨，あつた蓬莱軒松坂屋店就在裡面，吃鰻魚飯順便吹冷氣。",fit:"配合鰻魚飯行程",ico:"🏬"}
+];
+
+const FOODS=[
+{name:"海老どて食堂",kind:"炸蝦・名古屋名物",desc:"超巨大炸蝦本體。中部機場 4F 有分店——抵達日與回程日各吃一次剛剛好。"},
+{name:"あつた蓬莱軒（松坂屋店）",kind:"鰻魚飯三吃 ひつまぶし",desc:"名古屋鰻魚飯代表。本店排隊極兇，松坂屋店在百貨內吹冷氣排隊，夏天首選。建議開店前 20 分鐘到。"},
+{name:"世界の山ちゃん",kind:"夢幻炸雞翅",desc:"胡椒風味炸雞翅，市區分店多、機場也有。晚餐居酒屋氣氛，小孩可吃不辣款。"},
+{name:"MARUYA 本店",kind:"鰻魚飯",desc:"鰻魚飯另一選擇，名古屋站與機場都有店，回程日在機場吃最順。"},
+{name:"HARBS 榮本店",kind:"水果千層蛋糕",desc:"發源自名古屋的甜點名店，水果千層是招牌。下午躲太陽吃蛋糕的完美藉口。"},
+{name:"金鯱橫丁",kind:"名古屋城旁美食街",desc:"名古屋城門口的美食橫丁，味噌豬排、雞翅、味噌烏龍麵都有，參觀完直接吃。"},
+{name:"大須商店街小吃",kind:"食べ歩き",desc:"炸雞、鯛魚燒、水果飴、台灣香腸、刨冰……拱廊遮蔭下邊走邊吃。"},
+{name:"綠洲21・地下街",kind:"日常補給",desc:"住榮的地利：晚餐選擇無限多，全程室內動線。"}
+];
+
+/* ================= SVG 插圖 ================= */
+const ART={
+plane:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#bae6fd"/><circle cx="330" cy="34" r="18" fill="#fde047"/><ellipse cx="80" cy="40" rx="34" ry="12" fill="#fff" opacity=".9"/><ellipse cx="250" cy="26" rx="26" ry="9" fill="#fff" opacity=".8"/><g transform="translate(120,58) rotate(-8)"><path d="M0 20 L120 12 Q150 12 152 20 Q150 28 120 26 L0 30 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/><path d="M55 16 L30 -8 L44 -8 L78 14 Z" fill="#0f766e"/><path d="M55 26 L38 46 L50 46 L80 27 Z" fill="#0f766e"/><path d="M118 13 L128 -2 L136 -2 L130 13 Z" fill="#0f766e"/><circle cx="98" cy="18" r="2.6" fill="#38bdf8"/><circle cx="86" cy="18.6" r="2.6" fill="#38bdf8"/><circle cx="74" cy="19.2" r="2.6" fill="#38bdf8"/></g><rect y="118" width="400" height="32" fill="#7dd3fc"/><path d="M0 118 Q100 106 200 118 T400 118 V150 H0 Z" fill="#0ea5e9" opacity=".55"/></svg>`,
+tower:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#312e81"/><circle cx="70" cy="30" r="12" fill="#fef9c3"/><circle cx="300" cy="120" r="90" fill="#4338ca" opacity=".5"/><g stroke="#e2e8f0" stroke-width="3" fill="none"><path d="M200 18 V40"/><path d="M186 60 L200 40 L214 60"/><path d="M178 95 L200 60 L222 95"/><path d="M170 130 L200 95 L230 130"/><path d="M186 60 H214"/><path d="M178 95 H222"/></g><rect x="181" y="66" width="38" height="12" rx="4" fill="#fbbf24"/><ellipse cx="290" cy="118" rx="62" ry="14" fill="#22d3ee" opacity=".8"/><ellipse cx="290" cy="114" rx="62" ry="12" fill="none" stroke="#a5f3fc" stroke-width="2"/><rect y="132" width="400" height="18" fill="#1e1b4b"/><circle cx="120" cy="70" r="1.7" fill="#fff"/><circle cx="340" cy="42" r="1.7" fill="#fff"/><circle cx="40" cy="96" r="1.4" fill="#fff"/><circle cx="255" cy="30" r="1.4" fill="#fff"/></svg>`,
+castle:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#fef3c7"/><circle cx="330" cy="32" r="20" fill="#fb923c"/><g transform="translate(140,22)"><path d="M52 0 Q60 8 68 0 L74 12 H46 Z" fill="#facc15"/><path d="M30 14 H90 L82 26 H38 Z" fill="#166534"/><rect x="42" y="26" width="36" height="16" fill="#f8fafc" stroke="#94a3b8"/><path d="M26 42 H94 L84 56 H36 Z" fill="#166534"/><rect x="38" y="56" width="44" height="18" fill="#f8fafc" stroke="#94a3b8"/><path d="M20 74 H100 L88 90 H32 Z" fill="#166534"/><rect x="30" y="90" width="60" height="22" fill="#f8fafc" stroke="#94a3b8"/><path d="M18 112 H102 L112 128 H8 Z" fill="#78716c"/></g><rect y="138" width="400" height="12" fill="#65a30d"/><path d="M0 142 Q80 132 160 142 T400 140 V150 H0 Z" fill="#4d7c0f"/></svg>`,
+arcade:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#fee2e2"/><path d="M40 66 Q200 -14 360 66 V150 H40 Z" fill="#fecaca"/><path d="M40 66 Q200 -14 360 66" fill="none" stroke="#dc2626" stroke-width="7"/><g transform="translate(158,52)"><ellipse cx="42" cy="62" rx="34" ry="30" fill="#fff" stroke="#1f2a37" stroke-width="2.5"/><circle cx="42" cy="30" r="24" fill="#fff" stroke="#1f2a37" stroke-width="2.5"/><path d="M24 12 L20 -4 L34 8 Z" fill="#fff" stroke="#1f2a37" stroke-width="2.5"/><path d="M60 12 L64 -4 L50 8 Z" fill="#f87171" stroke="#1f2a37" stroke-width="2.5"/><circle cx="34" cy="28" r="3" fill="#1f2a37"/><circle cx="50" cy="28" r="3" fill="#1f2a37"/><path d="M38 36 Q42 40 46 36" stroke="#1f2a37" stroke-width="2" fill="none"/><path d="M8 44 Q0 32 12 26" stroke="#1f2a37" stroke-width="2.5" fill="none"/><circle cx="42" cy="58" r="10" fill="#fbbf24" stroke="#1f2a37" stroke-width="2"/><text x="42" y="63" font-size="10" text-anchor="middle" fill="#7c2d12" font-weight="bold">福</text></g><rect x="60" y="96" width="34" height="54" fill="#f87171"/><rect x="306" y="96" width="34" height="54" fill="#f87171"/><rect x="66" y="104" width="22" height="12" fill="#fff" opacity=".85"/><rect x="312" y="104" width="22" height="12" fill="#fff" opacity=".85"/></svg>`,
+lego:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#e0f2fe"/><circle cx="60" cy="34" r="16" fill="#fde047"/><g><rect x="96" y="84" width="88" height="46" rx="5" fill="#ef4444"/><circle cx="118" cy="84" r="9" fill="#ef4444"/><circle cx="140" cy="84" r="9" fill="#dc2626"/><circle cx="162" cy="84" r="9" fill="#ef4444"/><rect x="184" y="54" width="66" height="42" rx="5" fill="#3b82f6"/><circle cx="201" cy="54" r="8" fill="#3b82f6"/><circle cx="222" cy="54" r="8" fill="#2563eb"/><circle cx="242" cy="54" r="8" fill="#3b82f6"/><rect x="184" y="96" width="110" height="34" rx="5" fill="#facc15"/><circle cx="206" cy="96" r="8" fill="#facc15"/><circle cx="234" cy="96" r="8" fill="#eab308"/><circle cx="262" cy="96" r="8" fill="#facc15"/><rect x="252" y="62" width="52" height="34" rx="5" fill="#22c55e"/><circle cx="265" cy="62" r="7" fill="#22c55e"/><circle cx="286" cy="62" r="7" fill="#16a34a"/></g><rect y="130" width="400" height="20" fill="#86efac"/></svg>`,
+lego2:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#fef9c3"/><circle cx="340" cy="30" r="15" fill="#fb923c"/><g transform="translate(96,26)"><rect x="30" y="60" width="150" height="64" rx="6" fill="#3b82f6"/><circle cx="66" cy="60" r="10" fill="#3b82f6"/><circle cx="105" cy="60" r="10" fill="#2563eb"/><circle cx="144" cy="60" r="10" fill="#3b82f6"/><rect x="52" y="80" width="26" height="26" rx="4" fill="#bfdbfe"/><rect x="132" y="80" width="26" height="26" rx="4" fill="#bfdbfe"/><rect x="92" y="86" width="26" height="38" rx="3" fill="#1d4ed8"/><path d="M18 60 L105 6 L192 60 Z" fill="#ef4444"/><rect x="96" y="-8" width="18" height="26" fill="#facc15"/></g><rect y="132" width="400" height="18" fill="#fdba74"/></svg>`,
+orca:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#0c4a6e"/><circle cx="70" cy="30" r="26" fill="#155e75" opacity=".6"/><circle cx="330" cy="110" r="40" fill="#155e75" opacity=".5"/><g transform="translate(110,44)"><path d="M0 40 Q40 4 100 12 Q150 18 180 44 Q150 66 100 60 Q40 68 0 40 Z" fill="#0f172a"/><path d="M12 44 Q50 60 96 56 Q60 66 24 54 Z" fill="#f8fafc"/><ellipse cx="52" cy="30" rx="12" ry="7" fill="#f8fafc"/><path d="M86 10 L98 -18 L112 12 Z" fill="#0f172a"/><path d="M176 40 L200 24 L196 48 L200 62 Z" fill="#0f172a"/><circle cx="34" cy="30" r="3" fill="#fff"/></g><circle cx="150" cy="28" r="4" fill="#7dd3fc" opacity=".8"/><circle cx="162" cy="16" r="3" fill="#7dd3fc" opacity=".7"/><circle cx="142" cy="12" r="2.4" fill="#7dd3fc" opacity=".6"/><path d="M0 128 Q60 118 120 128 T240 128 T360 126 L400 128 V150 H0 Z" fill="#0369a1"/></svg>`,
+inuyama:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#dcfce7"/><circle cx="62" cy="30" r="16" fill="#fde047"/><path d="M0 96 Q100 40 200 84 Q300 120 400 78 V150 H0 Z" fill="#4ade80"/><g transform="translate(160,18)"><path d="M22 34 H62 L56 46 H28 Z" fill="#3f6212"/><rect x="30" y="46" width="24" height="12" fill="#fef9c3" stroke="#a16207"/><path d="M18 58 H66 L58 72 H26 Z" fill="#3f6212"/><rect x="26" y="72" width="32" height="14" fill="#fef9c3" stroke="#a16207"/><path d="M14 86 H70 L78 102 H6 Z" fill="#78716c"/><path d="M36 34 L42 22 L48 34 Z" fill="#facc15"/></g><path d="M0 128 Q100 116 200 128 T400 124 V150 H0 Z" fill="#38bdf8"/><path d="M30 136 Q50 132 70 136" stroke="#e0f2fe" stroke-width="2" fill="none"/><path d="M300 132 Q320 128 340 132" stroke="#e0f2fe" stroke-width="2" fill="none"/></svg>`,
+b787:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="150" fill="#e2e8f0"/><path d="M30 118 Q200 -30 370 118 Z" fill="#cbd5e1"/><path d="M30 118 Q200 -30 370 118" fill="none" stroke="#64748b" stroke-width="4"/><g stroke="#94a3b8" stroke-width="2"><path d="M85 96 Q200 -4 315 96" fill="none"/></g><g transform="translate(96,78)"><path d="M0 22 L160 14 Q196 14 200 24 Q196 32 160 30 L0 34 Z" fill="#fff" stroke="#475569" stroke-width="2.5"/><path d="M76 18 L44 -10 L60 -10 L104 16 Z" fill="#0ea5e9"/><path d="M76 30 L56 52 L70 52 L110 31 Z" fill="#0ea5e9"/><path d="M158 15 L172 -4 L182 -4 L172 15 Z" fill="#0ea5e9"/><ellipse cx="58" cy="34" rx="10" ry="6" fill="#334155"/><ellipse cx="120" cy="31" rx="10" ry="6" fill="#334155"/></g><rect y="134" width="400" height="16" fill="#94a3b8"/><rect x="60" y="140" width="60" height="3" fill="#f8fafc"/><rect x="180" y="140" width="60" height="3" fill="#f8fafc"/><rect x="300" y="140" width="60" height="3" fill="#f8fafc"/></svg>`
+};
+
+const HEAT_LABEL={1:"🧊 涼爽",2:"🌤️ 溫和",3:"☀️ 偏熱",4:"🔥 高溫注意",5:"🥵 酷熱警戒"};
+
+/* ================= 卡片檢視 ================= */
+function renderCards(){
+  const el=document.getElementById("view-cards");
+  el.innerHTML='<div class="grid">'+DAYS.map(d=>`
+  <article class="day-card">
+    <div class="art">${ART[d.art]}
+      <span class="day-num">Day ${d.d}・${d.w}</span>
+      <span class="day-heat heat h${d.heat}">${HEAT_LABEL[d.heat]}</span>
+    </div>
+    <div class="day-body">
+      <h3>${d.title}</h3>
+      <div class="meta">
+        <div class="meta-row"><span class="ico">📍</span><span>${d.spot}</span></div>
+        <div class="meta-row"><span class="ico">🏨</span><span>${d.hotel}</span></div>
+        <div class="meta-row"><span class="ico">🍜</span><span>${d.meals}</span></div>
+        <div class="meta-row"><span class="ico">🚃</span><span>${d.traffic}</span></div>
+      </div>
+      <div class="tip-box"><b>防暑重點：</b>${d.tip}</div>
+      <div class="backup-box"><b>備案：</b>${d.backup}</div>
+    </div>
+  </article>`).join("")+"</div>";
+}
+
+/* ================= 時間軸檢視 ================= */
+function renderTimeline(){
+  const el=document.getElementById("view-timeline");
+  el.innerHTML='<div class="timeline">'+DAYS.map(d=>`
+  <div class="tl-day">
+    <div class="tl-card">
+      <div class="tl-head">
+        <span class="d">Day ${d.d}｜${d.title}</span>
+        <span class="w">${d.w}</span>
+        <span class="heat h${d.heat}">${HEAT_LABEL[d.heat]}</span>
+      </div>
+      <div class="slots">
+        <div class="slot morning"><div class="slot-t">🌅 上午（戶外黃金時段）</div>${d.morning}</div>
+        <div class="slot noon"><div class="slot-t">🥵 正午（11–16時避暑）</div>${d.noon}</div>
+        <div class="slot evening"><div class="slot-t">🌆 傍晚（17時後）</div>${d.evening}</div>
+      </div>
+      <div class="tl-foot">🏨 ${d.hotel}　｜　🚃 ${d.traffic}</div>
+    </div>
+  </div>`).join("")+"</div>";
+}
+
+/* ================= 表格檢視 ================= */
+function renderTable(){
+  const el=document.getElementById("view-table");
+  el.innerHTML=`<div class="table-wrap"><table class="trip">
+  <thead><tr><th>天</th><th>主要行程</th><th>熱度</th><th>飯店</th><th>餐食</th><th>交通</th><th>防暑重點</th><th>備案</th></tr></thead>
+  <tbody>${DAYS.map(d=>`
+    <tr>
+      <td class="day-cell">Day ${d.d}<br><span style="font-weight:400;color:var(--ink-soft)">${d.w}</span></td>
+      <td><b>${d.title}</b><br>${d.spot}</td>
+      <td><span class="heat h${d.heat}">${HEAT_LABEL[d.heat]}</span></td>
+      <td>${d.hotel}</td>
+      <td>${d.meals}</td>
+      <td>${d.traffic}</td>
+      <td>${d.tip}</td>
+      <td>${d.backup}</td>
+    </tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ================= 逐日防暑表 ================= */
+function renderHeatTable(){
+  document.getElementById("heat-table").innerHTML=
+  `<thead><tr><th>天</th><th>行程</th><th>熱度</th><th>一句話重點</th></tr></thead>
+   <tbody>${DAYS.map(d=>`<tr>
+     <td class="day-cell">Day ${d.d}</td><td>${d.title}</td>
+     <td><span class="heat h${d.heat}">${HEAT_LABEL[d.heat]}</span></td>
+     <td>${d.tip.split("。")[0]}。</td></tr>`).join("")}</tbody>`;
+}
+
+/* ================= 備案 ================= */
+function renderBackups(){
+  document.getElementById("backup-grid").innerHTML=BACKUPS.map(b=>`
+  <div class="b-card">
+    <h3><span>${b.ico}</span>${b.name}</h3>
+    <div class="where">📍 ${b.where}</div>
+    <p>${b.desc}</p>
+    <span class="fit">${b.fit}</span>
+  </div>`).join("");
+}
+
+/* ================= 美食 ================= */
+function renderFoods(){
+  document.getElementById("food-grid").innerHTML=FOODS.map(f=>`
+  <div class="f-card"><h3>${f.name}</h3><div class="kind">${f.kind}</div><p>${f.desc}</p></div>`).join("");
+}
+
+/* ================= 列印版 ================= */
+function renderPrint(){
+  document.getElementById("print-area").innerHTML=`
+  <div class="p-head">
+    <h1>名古屋夏日之旅 9天8夜（防暑調整版）</h1>
+    <p>原則：戶外景點 9:00 開門即進場｜11:00–16:00 進室內或回飯店午休｜17:00 後戶外第二時段（日落約 19:00）</p>
+  </div>
+  <table class="p-table">
+    <thead><tr><th style="width:7%">天</th><th style="width:16%">行程</th><th style="width:8%">熱度</th><th style="width:23%">上午 / 正午 / 傍晚</th><th style="width:14%">飯店</th><th style="width:16%">餐食</th><th style="width:16%">備案</th></tr></thead>
+    <tbody>${DAYS.map(d=>`<tr>
+      <td><b>Day ${d.d}</b><br>${d.w}</td>
+      <td><b>${d.title}</b></td>
+      <td>${"●".repeat(d.heat)}${"○".repeat(5-d.heat)}</td>
+      <td>🌅 ${d.morning}<br>🥵 ${d.noon}<br>🌆 ${d.evening}</td>
+      <td>${d.hotel}</td>
+      <td>${d.meals}</td>
+      <td>${d.backup}</td></tr>`).join("")}
+    </tbody>
+  </table>
+  <div class="p-cols">
+    <div class="p-sec">
+      <h2>防暑裝備清單</h2>
+      <ul><li>手持風扇＋涼感巾</li><li>鹽分補給糖（塩分タブレット）</li><li>遮陽傘／帽、防曬乳</li><li>每人水壺、涼感濕紙巾</li><li>降溫噴霧、替換衣物（小孩）</li></ul>
+    </div>
+    <div class="p-sec">
+      <h2>中暑警訊</h2>
+      <ul><li>頭暈、噁心、臉紅不流汗、反應變慢</li><li>立刻進冷氣房，補水補鹽，脖子腋下降溫</li><li>意識不清 → 撥 119</li></ul>
+    </div>
+    <div class="p-sec">
+      <h2>室內備案速查</h2>
+      <ul>${BACKUPS.slice(0,6).map(b=>`<li><b>${b.name}</b>（${b.where}）</li>`).join("")}</ul>
+    </div>
+  </div>
+  <div class="p-note">熱度標示：●○○○○ 涼爽 → ●●●●● 酷熱警戒。名古屋 7–8 月平均高溫 31–33°C、濕度 70–75%，近年常見 35°C+ 猛暑日，體感溫度常達 38°C 以上。</div>`;
+}
+
+/* ================= 分頁與檢視切換 ================= */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.querySelectorAll("section.panel").forEach(p=>p.classList.remove("active"));
+    document.getElementById("panel-"+btn.dataset.tab).classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+document.querySelectorAll(".view-switch button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".view-switch button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    ["cards","timeline","table"].forEach(v=>{
+      document.getElementById("view-"+v).style.display=(v===btn.dataset.view)?"":"none";
+    });
+    try{localStorage.setItem("tripView",btn.dataset.view)}catch(e){}
+  });
+});
+/* 記住上次檢視 */
+try{
+  const saved=localStorage.getItem("tripView");
+  if(saved){const b=document.querySelector(`.view-switch button[data-view="${saved}"]`);if(b)b.click();}
+}catch(e){}
+
+renderCards();renderTimeline();renderTable();renderHeatTable();renderBackups();renderFoods();renderPrint();
+</script>
+</body>
+</html>
