@@ -118,6 +118,15 @@ p.sec-sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:18px}
 .seat-strip{display:flex;gap:8px;flex-wrap:wrap}
 .seat{background:var(--brand-soft);border:1.5px solid var(--brand);color:var(--brand);border-radius:8px;padding:4px 10px;font-size:.8rem;font-weight:800}
 .seat small{display:block;font-weight:700;color:var(--ink-soft)}
+.mini-cabin{flex:1}
+.mc-row{display:flex;align-items:flex-end;gap:5px}
+.mc-label{font-size:.75rem;font-weight:800;color:var(--ink-soft);margin-right:2px;align-self:center}
+.mc-seat{width:46px;text-align:center;border-radius:7px 7px 11px 11px;padding:5px 2px 4px;font-size:.78rem;font-weight:900;background:#eef1f4;color:#9aa7b2;border:1.5px solid var(--line)}
+.mc-seat small{display:block;font-size:.66rem;font-weight:700;line-height:1.2}
+.mc-seat.taken{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.mc-seat.kid{background:var(--violet-soft);border-color:var(--violet);color:var(--violet)}
+.mc-aisle{width:16px;text-align:center;font-size:.6rem;color:var(--ink-soft);align-self:center}
+.mc-note{font-size:.78rem;color:var(--ink-soft);margin-top:6px}
 
 /* ---------- Timeline view ---------- */
 .timeline{position:relative;padding-left:26px}
@@ -233,6 +242,11 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
   .view-switch button{flex:1;padding:8px 6px}
   .swap-bar{flex-direction:column;align-items:stretch}
   .g-body{grid-template-columns:1fr}
+  .mc-seat{width:34px;font-size:.7rem;padding:4px 1px 3px}
+  .mc-seat small{font-size:.56rem}
+  .mc-label{display:none}
+  .mc-aisle{width:10px}
+  .fc-body .fc-row{flex-wrap:wrap}
 }
 
 /* ---------- Print ---------- */
@@ -323,7 +337,17 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
         <div class="fc-row"><span class="k">🧳 託運</span><span>每人 1 件免費、每件限 20kg；<b>Sam、Nana 的那件已加購超重額度</b>（重物集中放這兩件）</span></div>
         <div class="fc-row"><span class="k">🎒 手提</span><span><b>隨身＋手提合計 2 件、總共 7kg/人</b>——樂桃出名嚴格，登機口會秤，超過現場收費託運</span></div>
         <div class="fc-row"><span class="k">⚡ 優先</span><span>Sam、Justin 的託運行李有優先取行李（到名古屋先出來）</span></div>
-        <div class="fc-row"><span class="k">💺 座位</span><span class="seat-strip"><span class="seat">4C<small>Sam</small></span><span class="seat">4D<small>Nana</small></span><span class="seat">4E<small>Justin</small></span><span class="seat">4F<small>Jackson</small></span></span></div>
+        <div class="fc-row"><span class="k">💺 座位</span>
+          <div class="mini-cabin">
+            <div class="mc-row">
+              <span class="mc-label">第4排</span>
+              <span class="mc-seat">A</span><span class="mc-seat">B</span><span class="mc-seat taken">C<small>Sam</small></span>
+              <span class="mc-aisle">走道</span>
+              <span class="mc-seat taken">D<small>Nana</small></span><span class="mc-seat kid">E<small>Justin</small></span><span class="mc-seat kid">F<small>Jackson</small></span>
+            </div>
+            <div class="mc-note">A320neo 前段第 4 排：Nana 走道邊帶兩小、Jackson 靠窗、Sam 在走道正對面支援。下機快＋優先行李＝紅眼早晨搶時間組合。</div>
+          </div>
+        </div>
         <div class="fc-row"><span class="k">📍 抵達</span><span>中部 T1 與名鐵站直結——入境後（抓 1 小時）搭名鐵進市區最順</span></div>
       </div>
     </div>
@@ -340,7 +364,17 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
         <div class="fc-row"><span class="k">🕖 報到</span><span><b>19:15 開始</b>（起飛前 2.5 小時）、T2 2 樓 B 櫃檯；FLIGHT OF DREAMS 在 T1 側，逛完剛好順路</span></div>
         <div class="fc-row"><span class="k">🧳 託運</span><span>額度大：30＋25＋20＋20kg——伴手禮放心買，超市泡麵零食都裝得下</span></div>
         <div class="fc-row"><span class="k">🎒 手提</span><span>10kg×4，比去程寬鬆很多</span></div>
-        <div class="fc-row"><span class="k">💺 座位</span><span class="seat-strip"><span class="seat">21C<small>Sam</small></span><span class="seat">21D<small>Nana</small></span><span class="seat">21E<small>Justin</small></span><span class="seat">21F<small>Jackson</small></span></span></div>
+        <div class="fc-row"><span class="k">💺 座位</span>
+          <div class="mini-cabin">
+            <div class="mc-row">
+              <span class="mc-label">第21排</span>
+              <span class="mc-seat">A</span><span class="mc-seat">B</span><span class="mc-seat taken">C<small>Sam</small></span>
+              <span class="mc-aisle">走道</span>
+              <span class="mc-seat taken">D<small>Nana</small></span><span class="mc-seat kid">E<small>Justin</small></span><span class="mc-seat kid">F<small>Jackson</small></span>
+            </div>
+            <div class="mc-note">同樣的隊形搬到第 21 排。晚班機 21:45 起飛，小孩上機大概率秒睡——靠窗兩位睡得最穩，Nana 顧走道側。</div>
+          </div>
+        </div>
         <div class="fc-row"><span class="k">📍 抵達</span><span>23:45 到桃園 T1，安排好接送或預約計程車（末班機捷來不及）</span></div>
       </div>
     </div>
