@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>名古屋夏日之旅 9天8夜｜防暑版行程</title>
-<meta name="description" content="名古屋9天8夜夏季行程：卡片／時間軸／表格三種檢視、防暑對策、室內備案、列印版。">
+<meta name="description" content="名古屋9天8夜夏季親子行程：卡片／時間軸／表格三種檢視、臨時換行程助手、景點攻略、防暑對策、室內備案、列印版。">
 <style>
 :root{
   --ink:#1f2a37;
@@ -20,6 +20,8 @@
   --danger-soft:#fdeaea;
   --cool:#2563eb;
   --cool-soft:#e8effc;
+  --violet:#7c3aed;
+  --violet-soft:#f1eafd;
   --radius:14px;
   --shadow:0 1px 3px rgba(31,42,55,.08),0 6px 18px rgba(31,42,55,.06);
   --font:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
@@ -35,18 +37,19 @@ img,svg{max-width:100%;display:block}
 .hero-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1}
 .hero .kicker{font-size:.82rem;letter-spacing:.35em;opacity:.85;margin-bottom:8px}
 .hero h1{font-size:clamp(1.5rem,4.2vw,2.4rem);font-weight:900;letter-spacing:.04em}
-.hero p.sub{margin-top:10px;font-size:clamp(.9rem,2.4vw,1.02rem);opacity:.92;max-width:620px}
+.hero p.sub{margin-top:10px;font-size:clamp(.9rem,2.4vw,1.02rem);opacity:.92;max-width:640px}
 .weather-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .weather-chip{background:rgba(255,255,255,.14);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 14px;font-size:.82rem}
 .weather-chip b{color:#fde047}
+.weather-chip.family{background:rgba(253,224,71,.22);border-color:rgba(253,224,71,.5)}
 
 /* ---------- Nav tabs ---------- */
 .navbar{max-width:1060px;margin:-52px auto 0;padding:0 16px;position:relative;z-index:2}
 .nav-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.tab-btn{flex:1 1 auto;min-width:96px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 8px;font-family:var(--font);font-size:.9rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:.18s;text-align:center}
+.tab-btn{flex:1 1 auto;min-width:88px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 6px;font-family:var(--font);font-size:.86rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:.18s;text-align:center}
 .tab-btn:hover{border-color:var(--brand);color:var(--brand)}
 .tab-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
-.print-btn{flex:0 0 auto;border:none;background:var(--accent);color:#fff;border-radius:10px;padding:10px 16px;font-family:var(--font);font-size:.9rem;font-weight:700;cursor:pointer}
+.print-btn{flex:0 0 auto;border:none;background:var(--accent);color:#fff;border-radius:10px;padding:10px 16px;font-family:var(--font);font-size:.86rem;font-weight:700;cursor:pointer}
 .print-btn:hover{filter:brightness(1.06)}
 
 main{max-width:1060px;margin:0 auto;padding:26px 16px 70px}
@@ -102,7 +105,7 @@ p.sec-sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:18px}
 .slot .slot-t{font-weight:800;font-size:.78rem;display:flex;align-items:center;gap:6px;margin-bottom:4px}
 .slot.morning .slot-t{color:#0369a1}
 .slot.noon .slot-t{color:var(--danger)}
-.slot.evening .slot-t{color:#7c3aed}
+.slot.evening .slot-t{color:var(--violet)}
 .tl-foot{margin-top:10px;font-size:.82rem;color:var(--ink-soft)}
 
 /* ---------- Table view ---------- */
@@ -113,6 +116,43 @@ table.trip td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-ali
 table.trip tr:nth-child(even) td{background:#f6f9fa}
 table.trip td.day-cell{font-weight:900;white-space:nowrap}
 
+/* ---------- Swap helper ---------- */
+.swap-bar{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-bottom:20px}
+.swap-field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:180px}
+.swap-field label{font-size:.8rem;font-weight:800;color:var(--ink-soft)}
+.swap-field select{font-family:var(--font);font-size:.92rem;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);cursor:pointer}
+.swap-field select:focus{outline:none;border-color:var(--brand)}
+.swap-hint{font-size:.82rem;color:var(--ink-soft);margin-bottom:16px}
+.opt-list{display:flex;flex-direction:column;gap:14px}
+.opt-card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.opt-card h3{font-size:1rem;font-weight:900;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:8px}
+.opt-tag{font-size:.72rem;font-weight:800;border-radius:999px;padding:2px 10px;background:var(--violet-soft);color:var(--violet)}
+.opt-row{display:flex;gap:8px;font-size:.85rem;color:var(--ink-soft);margin-bottom:5px}
+.opt-row .k{flex:0 0 auto;font-weight:800;color:var(--ink);white-space:nowrap}
+.opt-next{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:8px;padding:8px 12px;font-size:.83rem;margin-top:8px}
+.opt-next b{color:#b45309}
+.opt-empty{background:var(--card);border:1.5px dashed var(--line);border-radius:var(--radius);padding:28px;text-align:center;color:var(--ink-soft);font-size:.9rem}
+
+/* ---------- Guides ---------- */
+.guide{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+.guide summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:12px;font-weight:900;font-size:1rem;user-select:none}
+.guide summary::-webkit-details-marker{display:none}
+.guide summary .g-ico{font-size:1.3rem}
+.guide summary .g-sub{font-size:.78rem;font-weight:700;color:var(--ink-soft);margin-left:auto;text-align:right}
+.guide summary::after{content:"＋";font-weight:400;color:var(--brand);font-size:1.2rem;margin-left:10px}
+.guide[open] summary::after{content:"－"}
+.guide[open] summary{border-bottom:1px solid var(--line)}
+.g-body{padding:16px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.g-block{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fbfcfd}
+.g-block h4{font-size:.82rem;font-weight:900;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.g-block ul{list-style:none;font-size:.83rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px}
+.g-block li{padding-left:1.1em;position:relative}
+.g-block li::before{content:"›";position:absolute;left:0;color:var(--brand);font-weight:900}
+.g-block.hot-event{background:var(--accent-soft);border-color:#f5d9a8}
+.g-block.hot-event li::before{color:var(--accent)}
+.g-block.kids{background:var(--violet-soft);border-color:#ddd0f5}
+.g-block.kids li::before{color:var(--violet)}
+
 /* ---------- Heat strategy panel ---------- */
 .strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:26px}
 .s-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
@@ -120,6 +160,7 @@ table.trip td.day-cell{font-weight:900;white-space:nowrap}
 .s-card ul{list-style:none;font-size:.87rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:7px}
 .s-card li{padding-left:1.2em;position:relative}
 .s-card li::before{content:"›";position:absolute;left:0;color:var(--brand);font-weight:900}
+.s-card.stroller{border-left:5px solid var(--violet)}
 .timebar{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:26px}
 .timebar h3{font-size:1rem;font-weight:900;margin-bottom:12px}
 .tb-track{display:flex;border-radius:9px;overflow:hidden;font-size:.72rem;color:#fff;text-align:center;font-weight:700}
@@ -143,18 +184,26 @@ table.trip td.day-cell{font-weight:900;white-space:nowrap}
 .f-card .kind{font-size:.78rem;color:var(--accent);font-weight:800;margin-bottom:6px}
 .f-card p{font-size:.85rem;color:var(--ink-soft)}
 
+/* ---------- Event banner ---------- */
+.event-banner{background:linear-gradient(120deg,#7c3aed,#a855f7);color:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:22px}
+.event-banner h3{font-size:.95rem;font-weight:900;margin-bottom:8px}
+.event-banner ul{list-style:none;font-size:.85rem;display:flex;flex-direction:column;gap:5px;opacity:.95}
+.event-banner li b{color:#fde047}
+
 /* ---------- Footer ---------- */
 footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center;color:var(--ink-soft);font-size:.8rem}
 
 /* ---------- Mobile ---------- */
 @media (max-width:640px){
   .hero{padding:26px 18px 84px}
-  .tab-btn{min-width:calc(50% - 8px);font-size:.85rem}
+  .tab-btn{min-width:calc(33% - 8px);font-size:.8rem;padding:9px 4px}
   .print-btn{width:100%}
   .grid{grid-template-columns:1fr}
   .slots{grid-template-columns:1fr}
   .view-switch{width:100%;justify-content:space-between}
   .view-switch button{flex:1;padding:8px 6px}
+  .swap-bar{flex-direction:column;align-items:stretch}
+  .g-body{grid-template-columns:1fr}
 }
 
 /* ---------- Print ---------- */
@@ -172,8 +221,8 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
   table.p-table td{border:1px solid #bbb;padding:5px 6px;vertical-align:top}
   .p-sec{margin-bottom:12px;break-inside:avoid}
   .p-sec h2{font-size:12.5px;border-left:4px solid #0f766e;padding-left:7px;margin-bottom:6px}
-  .p-cols{display:flex;gap:14px}
-  .p-cols>div{flex:1}
+  .p-cols{display:flex;gap:14px;flex-wrap:wrap}
+  .p-cols>div{flex:1;min-width:200px}
   .p-sec ul{margin-left:14px;font-size:9.5px;line-height:1.55}
   .p-note{font-size:8.5px;color:#555;margin-top:10px;border-top:1px solid #ccc;padding-top:6px}
 }
@@ -185,10 +234,10 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
   <div class="hero-inner">
     <div class="kicker">NAGOYA・SUMMER FAMILY TRIP</div>
     <h1>名古屋夏日之旅 9天8夜 <span style="font-size:.6em;font-weight:700;opacity:.85">防暑調整版</span></h1>
-    <p class="sub">榮商圈・名古屋城・大須・樂高樂園・水族館・犬山城・FLIGHT OF DREAMS。以「戶外趁早晚、正午躲室內」原則重排的夏季行程。</p>
+    <p class="sub">榮商圈・名古屋城・大須・樂高樂園・水族館・犬山城・FLIGHT OF DREAMS。以「戶外趁早晚、正午躲室內」原則重排的夏季親子行程。</p>
     <div class="weather-strip">
-      <span class="weather-chip">7月均溫 <b>23–31°C</b></span>
-      <span class="weather-chip">8月均溫 <b>24–33°C</b></span>
+      <span class="weather-chip family">👨‍👩‍👧‍👦 <b>2大2小</b>（6歲・7歲）＋1台推車</span>
+      <span class="weather-chip">7月均溫 <b>23–31°C</b>・8月 <b>24–33°C</b></span>
       <span class="weather-chip">濕度 <b>70–75%</b>・體感常破 <b>38°C</b></span>
       <span class="weather-chip">近年常見 <b>35°C+ 猛暑日</b></span>
       <span class="weather-chip">日落約 <b>19:00</b></span>
@@ -199,6 +248,8 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
 <nav class="navbar">
   <div class="nav-card">
     <button class="tab-btn active" data-tab="itinerary">📅 每日行程</button>
+    <button class="tab-btn" data-tab="swap">🔀 換行程助手</button>
+    <button class="tab-btn" data-tab="guide">📖 景點攻略</button>
     <button class="tab-btn" data-tab="strategy">🌡️ 防暑對策</button>
     <button class="tab-btn" data-tab="backup">🏛️ 室內備案</button>
     <button class="tab-btn" data-tab="food">🍤 美食清單</button>
@@ -220,6 +271,47 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
   <div id="view-cards"></div>
   <div id="view-timeline" style="display:none"></div>
   <div id="view-table" style="display:none"></div>
+</section>
+
+<!-- ================= 換行程助手 ================= -->
+<section class="panel" id="panel-swap">
+  <h2 class="sec-title"><span class="bar"></span>臨時換行程助手</h2>
+  <p class="sec-sub">旅途中臨時狀況，選「今天是第幾天」＋「遇到什麼狀況」，馬上給你可行方案、路線和下一步接法。</p>
+  <div class="swap-bar">
+    <div class="swap-field">
+      <label>📅 今天是？</label>
+      <select id="swap-day"></select>
+    </div>
+    <div class="swap-field">
+      <label>⚡ 遇到什麼狀況？</label>
+      <select id="swap-sit">
+        <option value="hot">🥵 太熱了／猛暑日警報</option>
+        <option value="rain">🌧️ 下雨了</option>
+        <option value="tired">😴 小孩沒電了／太累</option>
+        <option value="time">⏰ 行程提早結束，多出時間</option>
+      </select>
+    </div>
+  </div>
+  <p class="swap-hint">💡 提示：所有替代方案都以「當天原定位置」為出發點計算路線，直接照著走就行。</p>
+  <div class="opt-list" id="swap-result"></div>
+</section>
+
+<!-- ================= 景點攻略 ================= -->
+<section class="panel" id="panel-guide">
+  <h2 class="sec-title"><span class="bar"></span>景點攻略</h2>
+  <p class="sec-sub">每個景點的門票優惠、必買、期間限定活動、美食與推車資訊。點開展開。</p>
+  <div class="event-banner">
+    <h3>🎆 旅行期間可能撞上的 2026 夏季限定活動（出發前再確認官網）</h3>
+    <ul>
+      <li><b>7/20（一）</b> 海之日名古屋みなと祭：約 3000 發花火，就在名古屋港水族館前！</li>
+      <li><b>7/31–8/2</b> 世界コスプレサミット：全球最大 Cosplay 祭典，主場在綠洲21、大須</li>
+      <li><b>8/8–8/16</b> 名古屋城夏まつり：傍晚屋台＋盆踊り（18:00–20:00），把名古屋城改到傍晚去的最佳理由</li>
+      <li><b>7/10–8/31</b> 樂高樂園「びしょぬれの夏」潑水祭：Water Maze 改版升級</li>
+      <li><b>8月第一個週末</b> 大須夏まつり：手筒花火、盆踊り、Cosplay／森巴遊行</li>
+      <li><b>6/1–10/15</b> 犬山木曽川鵜飼：夜間納涼船看鸕鶿捕魚（傍晚出航，涼爽）</li>
+    </ul>
+  </div>
+  <div id="guide-list"></div>
 </section>
 
 <!-- ================= 防暑對策 ================= -->
@@ -252,6 +344,17 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
         <li>降溫噴霧（冷却スプレー），噴衣服立刻涼</li>
       </ul>
     </div>
+    <div class="s-card stroller">
+      <h3>👶 推車防暑（重要！）</h3>
+      <ul>
+        <li>推車離柏油路面近，車內體感比大人高 2–3°C，小孩比你更熱</li>
+        <li>推車必備：涼感墊＋夾式風扇，雙管齊下</li>
+        <li>絕對不要用毯子／布罩推車遮陽——會悶成烤箱，要用透氣遮陽網</li>
+        <li>進冷氣room時讓 6 歲下車走走散熱</li>
+        <li>犬山城天守、本丸御殿內不能推——見各景點攻略的寄放點</li>
+        <li>地鐵全線有電梯，找「エレベーター」指標</li>
+      </ul>
+    </div>
     <div class="s-card">
       <h3>🚇 移動守則</h3>
       <ul>
@@ -259,6 +362,7 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
         <li>短程寧可搭一站地鐵，不要在大太陽下走 15 分鐘</li>
         <li>公車、地鐵都有冷氣，等車找有遮蔭的站牌</li>
         <li>中午回飯店午休不是浪費，是夏季日本旅遊標配</li>
+        <li>週末搭地鐵買ドニチエコきっぷ（大人¥620／小孩¥310），景點門票還有折扣</li>
       </ul>
     </div>
     <div class="s-card">
@@ -283,7 +387,7 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
   </div>
 
   <div class="alert-card">
-    <b>⚠️ 中暑警訊（帶小孩特別注意）：</b>頭暈、噁心、臉色發紅但不流汗、走路不穩、講話反應變慢。出現任一症狀立刻進冷氣房、補水補鹽、脖子腋下降溫；意識不清直撥 <b>119</b>。日本環境省中暑警戒資訊（暑さ指数 WBGT）可在出發後每天早上查看當日警戒等級。
+    <b>⚠️ 中暑警訊（帶小孩特別注意）：</b>頭暈、噁心、臉色發紅但不流汗、走路不穩、講話反應變慢。小孩常玩到忘記說不舒服，<b>每 30 分鐘主動問＋摸後頸</b>。出現症狀立刻進冷氣房、補水補鹽、脖子腋下降溫；意識不清直撥 <b>119</b>。出發後每天早上查日本環境省「暑さ指数（WBGT）」當日警戒等級。
   </div>
 
   <h2 class="sec-title"><span class="bar"></span>逐日防暑重點</h2>
@@ -296,7 +400,7 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
 <!-- ================= 室內備案 ================= -->
 <section class="panel" id="panel-backup">
   <h2 class="sec-title"><span class="bar"></span>室內備案雷達</h2>
-  <p class="sec-sub">猛暑日（35°C+）或午後雷雨時，直接抽換行程用。全部都有冷氣。</p>
+  <p class="sec-sub">猛暑日（35°C+）或午後雷雨時，直接抽換行程用。全部都有冷氣。想要更精準的建議，用「🔀 換行程助手」。</p>
   <div class="backup-grid" id="backup-grid"></div>
 </section>
 
@@ -310,14 +414,14 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
 </main>
 
 <footer>
-  名古屋夏日之旅・防暑調整版｜戶外趁早晚、正午躲室內 ☀️→🏛️→🌆
+  名古屋夏日之旅・防暑調整版｜2大2小（6歲・7歲）｜戶外趁早晚、正午躲室內 ☀️→🏛️→🌆
 </footer>
 
 <!-- ================= 列印版 ================= -->
 <div class="print-only" id="print-area"></div>
 
 <script>
-/* ================= 資料 ================= */
+/* ================= 每日行程資料 ================= */
 const DAYS=[
 {d:1,w:"週五",title:"抵達名古屋・榮商圈",spot:"中部國際機場 → 榮商圈",hotel:"Vessel Inn 榮站前",heat:1,
  art:"plane",
@@ -326,7 +430,7 @@ const DAYS=[
  morning:"班機抵達中部國際機場，機場內吃海老どて食堂炸蝦",
  noon:"名鐵進市區（全程冷氣），榮站前飯店 check-in、放行李午休",
  evening:"傍晚逛榮地下街（森之地下街）與商圈，全程幾乎不用曬太陽",
- tip:"抵達日行程全在室內動線，是最不怕熱的一天。趁機到藥妝店補齊防暑裝備：鹽糖、涼感巾、降溫噴霧。",
+ tip:"抵達日行程全在室內動線，是最不怕熱的一天。趁機到藥妝店補齊防暑裝備：鹽糖、涼感巾、降溫噴霧、推車夾扇電池。",
  backup:"不需要——本日即室內動線。"},
 {d:2,w:"週六",title:"綠洲21・名古屋電視塔",spot:"綠洲21購物中心＋中部電力 MIRAI TOWER",hotel:"Vessel Inn 榮站前",heat:2,
  art:"tower",
@@ -335,7 +439,7 @@ const DAYS=[
  morning:"睡飽吃飯店早餐，上午逛綠洲21商場（室內）",
  noon:"HARBS 吃蛋糕吹冷氣，地下街繼續逛",
  evening:"17:30 後上電視塔展望台，看夕陽轉夜景（日落約 19:00），水之宇宙船夜間點燈",
- tip:"電視塔展望台改到傍晚！白天上去又熱又刺眼，傍晚一次收集夕陽＋夜景，票價相同。",
+ tip:"電視塔展望台改到傍晚！白天上去又熱又刺眼，傍晚一次收集夕陽＋夜景，票價相同。今天是週六，記得買ドニチエコきっぷ，電視塔門票有折扣。",
  backup:"名古屋市科學館（白天場次），傍晚再回來上塔。"},
 {d:3,w:"週日",title:"名古屋城",spot:"名古屋城・本丸御殿・金鯱橫丁",hotel:"Vessel Inn 榮站前",heat:4,
  art:"castle",
@@ -344,7 +448,7 @@ const DAYS=[
  morning:"9:00 開門即進城！先看戶外天守外觀、拍照，再進本丸御殿（有空調）慢慢看",
  noon:"金鯱橫丁吃午餐，12:30 前撤退回飯店午休",
  evening:"傍晚逛榮商圈或地下街，晚餐後散步",
- tip:"名古屋城腹地大、遮蔭少，是本行程前段最熱的一天。務必 9 點衝第一批，順序「先戶外後室內」：戶外拍照 → 本丸御殿吹冷氣。天守閣目前不開放登閣，外觀拍照即可，不用留太久。",
+ tip:"名古屋城腹地大、遮蔭少，是前段最熱的一天。9 點衝第一批，順序「先戶外後室內」。若旅期撞上 8/8–16 夏まつり，整天翻轉：白天室內、傍晚進城吃屋台看盆踊り！",
  backup:"德川園＋德川美術館（美術館室內），或豐田產業技術紀念館。"},
 {d:4,w:"週一",title:"大須商店街・觀音寺",spot:"大須觀音＋大須商店街",hotel:"Vessel Inn 榮站前",heat:2,
  art:"arcade",
@@ -353,7 +457,7 @@ const DAYS=[
  morning:"上午先參拜大須觀音（戶外停留短），之後鑽進商店街拱廊",
  noon:"拱廊有頂遮蔭＋兩側店家冷氣，中午照常逛沒問題，熱了就進店",
  evening:"回榮休息，傍晚自由活動",
- tip:"大須拱廊商店街是夏天友善景點：有屋頂、店家密集、隨時能躲冷氣，還有很多冰品。招財貓廣場記得拍照。",
+ tip:"大須拱廊商店街是夏天友善景點：有屋頂、店家密集、隨時能躲冷氣，還有很多冰品。招財貓廣場記得拍照。店家多半 11–12 點才開，不用太早去。",
  backup:"本身就是備案等級的景點，遇雨也照逛。"},
 {d:5,w:"週二",title:"樂高樂園 Day 1",spot:"LEGOLAND Japan",hotel:"樂高樂園飯店（就在園區門口）",heat:5,
  art:"lego",
@@ -362,8 +466,8 @@ const DAYS=[
  morning:"開園即入場！先衝熱門設施（上午排隊最短、太陽最小）",
  noon:"11:30–15:00 離園回樂高飯店午休——飯店就在門口，這是住這裡最大優勢！門票可當日再入場",
  evening:"15:30 後回園區玩水區（Splash 區帶換洗衣物）與剩餘設施，待到閉園",
- tip:"樂高樂園幾乎全戶外，是全程最熱風險日。「上午衝＋回飯店午休＋傍晚再戰」三段式是夏天唯一解。水設施排中午後玩，濕了剛好消暑。",
- backup:"SEA LIFE 名古屋（樂高門口旁的室內水族館，小而美）。"},
+ tip:"樂高樂園幾乎全戶外，是全程最熱風險日。「上午衝＋回飯店午休＋傍晚再戰」三段式是夏天唯一解。門票務必前一天以前網路買（現場買最多貴 ¥1,200）。7/10–8/31 有潑水祭，帶泳衣換洗衣物。",
+ backup:"SEA LIFE 名古屋（樂高門口旁的室內水族館，買 Combo 票就含）。"},
 {d:6,w:"週三",title:"樂高樂園 Day 2",spot:"LEGOLAND Japan（第二日）",hotel:"樂高樂園飯店",heat:5,
  art:"lego2",
  meals:"飯店早餐 07:30–10:30（已預約）",
@@ -380,7 +484,7 @@ const DAYS=[
  morning:"退房寄行李，前往水族館，先看虎鯨、白鯨餵食時間表",
  noon:"整天室內冷氣！海豚表演場有遮蔭座位區，完美避暑日",
  evening:"回名古屋站 check-in 門樓酒店，站內商場晚餐",
- tip:"水族館是夏季完美行程，不用調整。唯一注意：海豚表演露天看台選上層遮蔭區，正午場次太陽大。",
+ tip:"水族館是夏季完美行程，不用調整。海豚表演露天看台選上層遮蔭區。若旅期含 7/20，みなと祭 3000 發花火就在水族館前施放，行程直接無縫接花火！",
  backup:"不需要——本日即避暑行程。"},
 {d:8,w:"週五",title:"犬山城",spot:"國寶犬山城＋城下町老街",hotel:"名古屋 JR 門樓酒店",heat:4,
  art:"inuyama",
@@ -389,25 +493,131 @@ const DAYS=[
  morning:"一早出發，9:00 登城（天守內無冷氣、要脫鞋爬陡梯，趁早涼快人少）",
  noon:"城下町老街邊走邊吃，熱了進店吹冷氣吃冰，13:00 前搭車回名古屋",
  evening:"名古屋站商圈逛街，或回飯店休息，晚餐吃あつた蓬莱軒鰻魚飯（松坂屋店）",
- tip:"犬山城天守是木造國寶、沒有冷氣，正午進去像蒸籠。一定要一早去：9 點登城涼快、視野又好。下午行程果斷收回名古屋市區。",
- backup:"豐田產業技術紀念館或名古屋市科學館（皆室內）。"},
+ tip:"犬山城天守木造無冷氣、樓梯陡，推車要寄放城門口（6 歲自己爬沒問題，大人前後包夾）。務必一早去。買名鐵「犬山城下町きっぷ」套票，車票＋門票＋商店優惠一次搞定。",
+ backup:"豐田產業技術紀念館或名古屋市科學館（皆室內）；或改傍晚看木曽川鵜飼納涼船。"},
 {d:9,w:"週六",title:"FLIGHT OF DREAMS・回程",spot:"波音 787 飛行博物館（中部機場）",hotel:"—（回程）",heat:1,
  art:"b787",
  meals:"早餐 06:30–10:00；午餐：海老どて食堂；晚餐候選：世界の山ちゃん炸雞翅 or MARUYA 本店鰻魚飯（皆機場有店）",
  traffic:"名鐵直達中部國際機場，博物館就在機場內",
  morning:"退房搭名鐵到機場，行李寄放或先掛",
- noon:"FLIGHT OF DREAMS 看波音 787 實機（全室內），逛機場商店街買伴手禮",
+ noon:"FLIGHT OF DREAMS 看波音 787 實機（全室內），有兒童遊具區讓小孩放電",
  evening:"機場晚餐後搭機返台",
- tip:"完美收尾日：博物館、餐廳、伴手禮全在機場室內完成，零防暑壓力。名古屋名物最後總複習：炸蝦、雞翅、鰻魚飯都能在機場補完。",
+ tip:"完美收尾日：博物館、餐廳、伴手禮全在機場室內完成，零防暑壓力。ぴよりん和坂角蝦餅常完售，看到先買。",
  backup:"不需要——全程室內。"}
 ];
 
+/* ================= 換行程助手資料 ================= */
+/* s: hot=太熱 rain=下雨 tired=小孩累 time=多出時間 */
+const SWAP={
+1:{loc:"榮",opts:[
+ {s:["hot","rain"],tag:"室內續航",name:"榮地下街＋綠洲21 一路逛到晚餐",route:"飯店步行 3 分進森之地下街，地下直通綠洲21",stay:"2–3 小時",next:"晚餐就在地下街或綠洲21樓上解決，飯後上綠洲21屋頂「水之宇宙船」看點燈（免費，晚上已不熱）"},
+ {s:["tired"],tag:"低耗能",name:"飯店午睡＋樓下超商補給",route:"人已在飯店，零移動",stay:"睡到自然醒",next:"傍晚視體力到地下街簡單吃，早點睡——明天才是重點"},
+ {s:["time"],tag:"加碼",name:"提前上電視塔看夜景",route:"飯店步行約 8 分（或地下街走到底）",stay:"1 小時",next:"原定 Day 2 的電視塔提前完成，Day 2 就多出一個傍晚可自由運用"}]},
+2:{loc:"榮",opts:[
+ {s:["hot","rain"],tag:"神備案",name:"名古屋市科學館（世界最大天象儀）",route:"東山線榮→伏見 1 站，5 號出口步行 5 分",stay:"3–4 小時",next:"天象儀場次先到先選，進館先劃位。傍晚回榮，照原計畫 17:30 上電視塔（雨天改看室內夜景也行）"},
+ {s:["tired"],tag:"減量",name:"只留 HARBS＋綠洲21，塔縮短",route:"全程飯店周邊步行",stay:"半天",next:"晚餐後若小孩恢復，再上塔 30 分鐘看夜景就好；沒恢復就直接回房"},
+ {s:["time"],tag:"加碼",name:"SUNSHINE SAKAE 摩天輪 or 松坂屋",route:"榮站步行 3 分（摩天輪就在大樓外牆上）",stay:"1–2 小時",next:"搭完剛好接晚餐，矢場町的矢場とん味噌豬排本店步行可到"}]},
+3:{loc:"名古屋城",opts:[
+ {s:["hot"],tag:"翻轉行程",name:"白天德川美術館，傍晚才進名古屋城",route:"榮搭巴士或地鐵→大曾根，美術館室內看國寶",stay:"美術館 2 小時",next:"若旅期在 8/8–16：17:00 後進名古屋城吃屋台、18:00 盆踊り（夏まつり期間傍晚超值）；非祭典期就傍晚拍城牆外觀+金鯱橫丁晚餐"},
+ {s:["rain"],tag:"室內替代",name:"豐田產業技術紀念館",route:"榮→名古屋站，轉名鐵一站或步行 15 分（地下街可走大半）",stay:"2.5–3 小時",next:"紡織機實演＋汽車製程小孩看得目不轉睛。出來直接在名古屋站地下街晚餐，順便探點 Day 7 飯店位置"},
+ {s:["tired"],tag:"速攻",name:"名古屋城 90 分鐘精華版",route:"照原路線，但只走「正門→天守拍照→本丸御殿→金鯱橫丁」",stay:"1.5 小時",next:"買個金鯱冰淇淋就撤，回飯店午睡，傍晚榮商圈補回來"},
+ {s:["time"],tag:"加碼",name:"德川園散步（傍晚涼了再去）",route:"名古屋城搭 Me~guru 觀光巴士或地鐵到大曾根",stay:"1 小時",next:"日式庭園傍晚光線最美，回程大曾根站直達榮"}]},
+4:{loc:"大須",opts:[
+ {s:["hot"],tag:"就地避暑",name:"大須本身就是避暑動線——調整逛法",route:"只走有拱廊的東仁王門通、萬松寺通，熱了進店",stay:"照原計畫",next:"下午 3 點後轉戰矢場町松坂屋（地鐵 1 站），あつた蓬莱軒鰻魚飯就在裡面，提前吃掉這個口袋名單"},
+ {s:["rain"],tag:"照常",name:"拱廊有頂，照逛不誤",route:"原路線",stay:"照原計畫",next:"雨天扭蛋店、二手玩具店反而好逛，小孩挖寶時間"},
+ {s:["tired"],tag:"減量",name:"觀音寺＋招財貓廣場＋一條街就好",route:"大須觀音站進、上前津站出，走最短動線",stay:"1.5 小時",next:"外帶新雀糰子和李さん炸雞回飯店，下午全休"},
+ {s:["time"],tag:"加碼",name:"萬松寺參拜＋電視塔補課",route:"萬松寺就在商店街內；之後地鐵回榮",stay:"1–2 小時",next:"若 Day 2 沒上到電視塔，今天傍晚補上剛剛好"}]},
+5:{loc:"樂高樂園",opts:[
+ {s:["hot"],tag:"標準解",name:"回樂高飯店午休（三段式玩法）",route:"飯店就在園區門口，步行 1 分",stay:"11:30–15:00",next:"15:30 蓋再入園章回園，直奔水區 Splash Pad（7/10–8/31 潑水祭），濕身消暑玩到閉園"},
+ {s:["hot","rain"],tag:"室內轉進",name:"SEA LIFE 名古屋（門口旁）",route:"樂高正門旁步行 1 分",stay:"1–1.5 小時",next:"買票時選 Combo 票就含這裡。看完雨停/降溫再回園，沒停就 Maker's Pier 吃飯逛街"},
+ {s:["tired"],tag:"低耗能",name:"飯店午休＋飯店內樂高池／遊戲區",route:"零移動",stay:"下午",next:"樂高飯店本身就是遊樂設施，晚餐 Maker's Pier，明天還有一整天可補"},
+ {s:["time"],tag:"加碼",name:"Maker's Pier 晚餐＋夜景散步",route:"園區出口步行 3 分",stay:"晚上",next:"港區傍晚有海風，是全天最舒服的時段"}]},
+6:{loc:"樂高樂園",opts:[
+ {s:["hot","rain"],tag:"神備案",name:"磁浮鐵道館（リニア・鉄道館）",route:"金城埠頭站旁，樂高步行約 10 分（有遮蔭通道）",stay:"2.5–3 小時",next:"新幹線模擬駕駛要抽籤/購券，進館先辦。看完傍晚回樂高補設施，或直接回市區提早晚餐"},
+ {s:["tired"],tag:"彈性",name:"上午精選 3 設施＋提早回市區",route:"青波線→名古屋站",stay:"上午在園",next:"下午名古屋站 JR Gate Tower 逛街吹冷氣，晚餐站內美食樓層，順便熟悉明天飯店位置"},
+ {s:["time"],tag:"加碼",name:"傍晚回市區後名古屋站商圈",route:"青波線 24 分直達名古屋站",stay:"傍晚",next:"高島屋 B1 買甜點回飯店，明天水族館就在市區行程銜接輕鬆"}]},
+7:{loc:"名古屋港水族館",opts:[
+ {s:["hot"],tag:"已是避暑",name:"全館室內——只調整戶外看台場次",route:"照原計畫",stay:"照原計畫",next:"海豚秀選遮蔭上層；若當天有夜間開館（夏季常延長至 20:00），改傍晚看秀更涼"},
+ {s:["rain"],tag:"照常",name:"室內照常，花火順延再應變",route:"照原計畫",stay:"照原計畫",next:"若為 7/20 みなと祭日遇雨，花火多半順延——查官網公告再決定要不要留到晚上"},
+ {s:["tired"],tag:"精華版",name:"北館虎鯨＋海豚秀 2.5 小時速攻",route:"進館直奔北館",stay:"2.5 小時",next:"提早回名古屋站 check-in，飯店房間休息，晚餐下樓就有"},
+ {s:["time"],tag:"加碼",name:"南極觀測船富士號 or JETTY 商場",route:"水族館旁步行 3 分",stay:"1 小時",next:"若是 7/20：花火 19:30 前後就在這區施放，直接卡位！記得先在 JETTY 買晚餐野餐"}]},
+8:{loc:"犬山",opts:[
+ {s:["hot"],tag:"翻轉行程",name:"白天市區室內，傍晚改看木曽川鵜飼",route:"白天：名古屋站豐田產業技術紀念館；16:00 名鐵去犬山",stay:"鵜飼納涼船傍晚出航（6/1–10/15）",next:"夜間鵜飼看鸕鶿捕魚＋川風納涼，超特別的體驗。登城改天亮前？不必——城外觀點燈也很美，門票錢省下來"},
+ {s:["rain"],tag:"改期/取消",name:"天守木梯濕滑＋展望差，果斷改室內",route:"名古屋站步行/名鐵一站→豐田產業技術紀念館",stay:"3 小時",next:"犬山適合好天氣再去；今天把鰻魚飯（蓬莱軒松坂屋店）排進午餐，雨天百貨內排隊不痛苦"},
+ {s:["tired"],tag:"減量",name:"不登城版犬山：城下町＋三光稻荷神社",route:"照原路線到犬山，只走平地",stay:"2 小時",next:"粉紅愛心繪馬牆拍照、糰子吃一輪就回程，推車全程可推（神社有少許階梯，輪流顧）"},
+ {s:["time"],tag:"加碼",name:"昭和橫丁＋犬山遊園站河岸散步",route:"城下町內／木曽川沿岸",stay:"1 小時",next:"回名古屋後時間還早的話，名古屋站商圈最後採買"}]},
+9:{loc:"中部機場",opts:[
+ {s:["hot","rain"],tag:"零影響",name:"全程機場室內，照原計畫",route:"照原計畫",stay:"照原計畫",next:"FLIGHT OF DREAMS 免費入場，逛完直接安檢"},
+ {s:["tired"],tag:"放電處",name:"FLIGHT OF DREAMS 兒童遊具區",route:"機場第 1 航廈步行連通",stay:"1–2 小時",next:"小孩在 787 底下的遊戲區放電，大人輪流去買伴手禮（ぴよりん、坂角蝦餅要趁早）"},
+ {s:["time"],tag:"加碼",name:"Sky Deck 展望台看飛機",route:"第 1 航廈 4F 直上",stay:"30 分鐘",next:"傍晚不熱時去，看完進管制區。也可以去 4F 錢湯「風の湯」泡個澡再上飛機（有毛巾租借）"}]}
+};
+
+/* ================= 景點攻略資料 ================= */
+const GUIDES=[
+{ico:"🧱",name:"樂高樂園 LEGOLAND Japan",sub:"Day 5–6・金城埠頭",
+ how:["門票務必前一天以前網路買——當日現場購買最多貴 ¥1,200","開園前 15 分鐘到門口排隊，開園直衝熱門設施（Submarine Adventure、Dragon）","官方 App 即時顯示各設施等待時間，邊玩邊看","水遊區 Splash Pad 開放期間免費（含在門票內），帶泳衣＋換洗衣物＋防水袋","中午 11:30 蓋再入園章回飯店午休，15:30 回園——夏季鐵則"],
+ buy:["名古屋限定樂高盒組（金鯱、名古屋城）只有這裡買得到","Build a Minifigure：自選零件組 3 隻人偶","樂高造型爆米花桶（磚塊造型，回家還能當收納）"],
+ deal:["官網早鳥票最便宜，Klook／KKday 有時有促銷價","Combo 1-Day Pass 加購 SEA LIFE 水族館只多一點點錢","2-Day Pass 比買兩天單日票省很多——你們住兩天必買"],
+ event:["「びしょぬれの夏」潑水祭 2026/7/10–8/31：Water Maze 改版升級","Splash Pad 水遊區 5/30–9/27 開放"],
+ food:["園內 Brick House Burger、樂高薯塊（磚塊造型）","Maker's Pier（園區旁）餐廳選擇更多、價格更合理"],
+ kids:["6、7 歲是樂高樂園核心客群，90cm 以上幾乎全部設施可玩（部分需大人陪同）","園內可租推車（收費）；自家推車全園可推，設施排隊處有推車停放區","樂高飯店住客有專屬入園優惠時段（依時期，check-in 時問櫃檯）"]},
+{ico:"🏯",name:"名古屋城",sub:"Day 3・市役所站/巴士",
+ how:["9:00 開門即進場，先戶外拍照再進本丸御殿吹冷氣","天守閣重建中不開放登閣，外觀拍照即可","本丸御殿是重點：金碧輝煌的障壁畫，需脫鞋參觀","逛完從東門出去就是金鯱橫丁吃午餐"],
+ buy:["金鯱造型周邊（御守、玩偶、金箔冰淇淋）","御城印（名古屋城限定，收集控必買）"],
+ deal:["門票大人 ¥500，中學生以下免費——你們家小孩全免！","持ドニチエコきっぷ門票折 ¥100（週日去剛好用得上）"],
+ event:["名古屋城夏まつり 2026/8/8–16：傍晚屋台＋18:00–20:00 盆踊り大會，若旅期有撞到，強烈建議整天翻轉成傍晚進城"],
+ food:["金鯱橫丁：義直區（傳統名物）＋宗春區（創新料理），味噌豬排、雞翅、金鯱冰"],
+ kids:["園區平坦，推車全程可推（部分碎石路慢慢推）","本丸御殿內不能推——門口有推車停放處，6 歲下來走（內部不大）","城內遮蔭少，推車遮陽網＋風扇全開"]},
+{ico:"🐋",name:"名古屋港水族館",sub:"Day 7・名古屋港站",
+ how:["進館先看當日表演時刻表（官網也有）：虎鯨公開訓練、海豚表演、白鯨餵食","動線：北館（虎鯨/海豚）→ 南館（企鵝/龜/深海）","海豚表演看台是露天的——選上層遮蔭區座位","夏季常有夜間延長開館（至 20:00），傍晚場更涼更好看，出發前查官網"],
+ buy:["虎鯨、企鵝絨毛玩偶（這裡的虎鯨周邊是日本水族館中最齊的）","造型爆米花桶、限定餅乾罐"],
+ deal:["大人 ¥2,030／國小生 ¥1,010／4 歲以上 ¥500","持ドニチエコきっぷ折 ¥200","17:00 後夜間票更便宜（有夜間開館日時）"],
+ event:["7/20 海之日みなと祭：約 3000 發花火就在水族館前海面施放，免費觀賞區在水族館前廣場和 JETTY 前"],
+ food:["館內餐廳普通，建議 JETTY 商場（旁邊）或帶回名古屋站再吃"],
+ kids:["全館電梯，推車暢行無阻，也可免費借嬰兒車","館內冷氣強，幫小孩帶件薄外套","觸摸池（磯場）小孩可以摸海星，記得帶擦手巾"]},
+{ico:"⛰️",name:"犬山城＋城下町",sub:"Day 8・名鐵犬山線",
+ how:["國寶天守：木造原裝、樓梯極陡、需脫鞋——一早 9:00 登城避人潮避熱","頂樓迴廊視野 360°，木曽川景色值得爬","下城後城下町本町通老街邊走邊吃","三光稻荷神社：粉紅愛心繪馬牆，網美點也是小孩投錢許願點"],
+ buy:["犬山城御城印＋城下町限定御朱印帳","恋小町だんご（彩色糰子拼盤，拍照第一名）"],
+ deal:["名鐵「犬山城下町きっぷ」：來回車票＋登城券＋商店優惠券，比分開買省 ¥200–300，名鐵名古屋站服務台購買"],
+ event:["木曽川鵜飼 6/1–10/15：傍晚納涼船看鸕鶿捕魚（夜鵜飼約 19:00），若不登城可改成傍晚犬山行程"],
+ food:["醬油糰子、烤味噌田樂、飛驒牛串、芝麻冰淇淋——整條老街都是食べ歩き"],
+ kids:["天守樓梯陡窄，推車寄放售票處旁（免費），6 歲自己爬 OK，大人前後包夾","城下町老街平坦好推，但假日人多","山腳到天守有一段上坡石板路，推車推得動但費力，輪流推"]},
+{ico:"🐱",name:"大須商店街＋大須觀音",sub:"Day 4・大須觀音站",
+ how:["先拜大須觀音（鴿子超多，小孩餵鴿子會瘋掉），再進拱廊","主要動線：仁王門通→萬松寺通→新天地通，全程有頂","店家大多 11–12 點才開門，不用早到","招財貓廣場（ふれあい広場）拍照打卡"],
+ buy:["大須ういろ（外郎糕，名古屋名物伴手禮）","扭蛋店、二手玩具店、動漫周邊——小孩的挖寶天堂"],
+ deal:["免門票，全程免費逛；商店街官網偶有優惠券活動"],
+ event:["大須夏まつり（8月第一個週末）：手筒花火、盆踊り、Cosplay＋森巴遊行","世界コスプレサミット 7/31–8/2 期間大須也是會場之一，滿街 Coser"],
+ food:["新雀本店現烤糰子、李さんの台湾名物屋台炸雞、KANNON COFFEE、水果飴、刨冰"],
+ kids:["拱廊平坦推車好推，但假日下午人潮多，推車建議早上或平日","觀音寺前廣場鴿子多，小孩放風好地方"]},
+{ico:"🗼",name:"MIRAI TOWER＋綠洲21",sub:"Day 2・榮站",
+ how:["中部電力 MIRAI TOWER（原名古屋電視塔）：17:30 後上塔，夕陽→夜景一次收","綠洲21「水之宇宙船」：屋頂水盤步道，晚上點燈免費散步","兩者相鄰，地下街直通，全程可不曬太陽"],
+ buy:["綠洲21 B1 有吉卜力、寶可夢等專門店——小孩失心瘋警報","塔上限定明信片"],
+ deal:["展望台大人 ¥1,300／小中學生 ¥800","持ドニチエコきっぷ有門票優惠"],
+ event:["世界コスプレサミット 2026/7/31–8/2：主會場就在綠洲21，免費看全球 Coser"],
+ food:["HARBS 榮本店步行 5 分（水果千層必點）；綠洲21、地下街餐廳無數"],
+ kids:["電梯直上展望台，推車 OK","綠洲21 屋頂晚上涼、燈光美，小孩跑跑剛好放電"]},
+{ico:"✈️",name:"FLIGHT OF DREAMS",sub:"Day 9・中部機場",
+ how:["波音 787 初號機實機展示，免費入場！","飛機底下就是兒童遊具區，登機前放電完美","西雅圖主題美食街就在館內","逛完步行回航廈辦登機，零時間壓力"],
+ buy:["ぴよりん（小雞造型甜點，名古屋超人氣，常完售看到先買）","坂角総本舖「ゆかり」蝦餅——機場有店","兩口屋是清「千なり」銅鑼燒"],
+ deal:["FLIGHT PARK 免費入場，錢留著買伴手禮"],
+ event:["館內不定期有飛機主題工作坊，當天看公告"],
+ food:["館內 Seattle 美食街；4F 藍天城餐廳街有まるや鰻魚飯、世界の山ちゃん、海老どて食堂——名古屋名物最後總複習"],
+ kids:["機場全程無障礙推車友善","4F Sky Deck 展望台看飛機起降（戶外，傍晚再去）","4F 還有錢湯「風の湯」，起飛前泡澡看飛機"]},
+{ico:"🔭",name:"名古屋市科學館（備案王）",sub:"備案・伏見站",
+ how:["世界最大球形天象儀 Brother Earth，場次券開館常售完——9:30 開館前排隊，或先線上購票","極光劇場、放電實驗室（每天固定場次，先查時刻）","展區互動設施超多，小孩待一整天沒問題"],
+ buy:["天文周邊、實驗玩具——理科小孩的天堂"],
+ deal:["展示室＋天象儀大人 ¥800、國中以下免費！（你們家小孩全免）","持ドニチエコきっぷ折扣"],
+ event:["夏季特別展每年 7–9 月舉辦（多為恐龍/昆蟲主題），需另購票但通常很值"],
+ food:["館內輕食部＋白川公園旁餐廳；伏見地下街也有選擇"],
+ kids:["全館電梯推車 OK","天象儀場次全日語，但星空影像本身就夠震撼，6–7 歲看得懂","放電實驗雷聲很大，會怕聲音的小孩坐後排"]}
+];
+
 const BACKUPS=[
-{name:"名古屋市科學館",where:"伏見站（榮旁一站）",desc:"世界最大球形天象儀，理工系親子聖地，極光劇場、龍捲風實驗超好看。",fit:"替代：名古屋城日／犬山城日／任何猛暑日",ico:"🔭"},
+{name:"名古屋市科學館",where:"伏見站（榮旁一站）",desc:"世界最大球形天象儀，理工系親子聖地，極光劇場、龍捲風實驗超好看。國中以下免費。",fit:"替代：名古屋城日／犬山城日／任何猛暑日",ico:"🔭"},
 {name:"リニア・鉄道館 磁浮鐵道館",where:"金城埠頭站（樂高樂園旁）",desc:"JR 東海鐵道博物館：新幹線、磁浮實車展示＋駕駛模擬器，小孩瘋掉等級。",fit:"樂高樂園日的中午避暑首選（走路可到）",ico:"🚄"},
-{name:"豐田產業技術紀念館",where:"名古屋站步行/名鐵一站",desc:"從紡織機到汽車的百年工藝，實機演示多、互動性高，大人小孩都看得入迷。",fit:"替代：任何市區日",ico:"⚙️"},
+{name:"豐田產業技術紀念館",where:"名古屋站步行/名鐵一站",desc:"從紡織機到汽車的百年工藝，實機演示多、互動性高，大人小孩都看得入迷。",fit:"替代：任何市區日／雨天犬山替代",ico:"⚙️"},
 {name:"德川園＋德川美術館",where:"大曾根站",desc:"美術館看國寶刀劍與源氏物語繪卷（室內），庭園傍晚再逛。",fit:"替代：名古屋城日（同樣有歷史感）",ico:"🏯"},
-{name:"SEA LIFE 名古屋",where:"金城埠頭站（樂高門口旁）",desc:"樂高主題小型水族館，1–1.5 小時剛好，和樂高門票有套票。",fit:"樂高樂園日的快速避暑點",ico:"🐠"},
+{name:"SEA LIFE 名古屋",where:"金城埠頭站（樂高門口旁）",desc:"樂高主題小型水族館，1–1.5 小時剛好，買樂高 Combo 票就包含。",fit:"樂高樂園日的快速避暑點",ico:"🐠"},
 {name:"JR Gate Tower／名站地下街",where:"名古屋站",desc:"高島屋、Gate Tower Mall、驚安殿堂與巨大地下街網絡，吃逛買一條龍不見天日。",fit:"任何下午的萬用避暑點",ico:"🛍️"},
 {name:"榮地下街＋綠洲21",where:"榮站",desc:"住宿樓下的避暑主場：森之地下街、Central Park 地下街、綠洲21。",fit:"住榮期間每天傍晚前的緩衝",ico:"🌳"},
 {name:"松坂屋名古屋店",where:"矢場町站",desc:"老牌百貨，あつた蓬莱軒松坂屋店就在裡面，吃鰻魚飯順便吹冷氣。",fit:"配合鰻魚飯行程",ico:"🏬"}
@@ -421,6 +631,7 @@ const FOODS=[
 {name:"HARBS 榮本店",kind:"水果千層蛋糕",desc:"發源自名古屋的甜點名店，水果千層是招牌。下午躲太陽吃蛋糕的完美藉口。"},
 {name:"金鯱橫丁",kind:"名古屋城旁美食街",desc:"名古屋城門口的美食橫丁，味噌豬排、雞翅、味噌烏龍麵都有，參觀完直接吃。"},
 {name:"大須商店街小吃",kind:"食べ歩き",desc:"炸雞、鯛魚燒、水果飴、台灣香腸、刨冰……拱廊遮蔭下邊走邊吃。"},
+{name:"ぴよりん",kind:"小雞甜點・伴手禮",desc:"名古屋雞蛋布丁做的小雞造型甜點，超人氣常完售。名古屋站、機場都有店，看到就買。"},
 {name:"綠洲21・地下街",kind:"日常補給",desc:"住榮的地利：晚餐選擇無限多，全程室內動線。"}
 ];
 
@@ -438,6 +649,7 @@ b787:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspe
 };
 
 const HEAT_LABEL={1:"🧊 涼爽",2:"🌤️ 溫和",3:"☀️ 偏熱",4:"🔥 高溫注意",5:"🥵 酷熱警戒"};
+const SIT_LABEL={hot:"🥵 太熱",rain:"🌧️ 下雨",tired:"😴 沒電",time:"⏰ 多出時間"};
 
 /* ================= 卡片檢視 ================= */
 function renderCards(){
@@ -501,6 +713,51 @@ function renderTable(){
     </tr>`).join("")}</tbody></table></div>`;
 }
 
+/* ================= 換行程助手 ================= */
+function renderSwap(){
+  const daySel=document.getElementById("swap-day");
+  daySel.innerHTML=DAYS.map(d=>`<option value="${d.d}">Day ${d.d}（${d.w}）${d.title}</option>`).join("");
+  daySel.addEventListener("change",updateSwap);
+  document.getElementById("swap-sit").addEventListener("change",updateSwap);
+  updateSwap();
+}
+function updateSwap(){
+  const day=+document.getElementById("swap-day").value;
+  const sit=document.getElementById("swap-sit").value;
+  const data=SWAP[day];
+  const opts=data?data.opts.filter(o=>o.s.includes(sit)):[];
+  const el=document.getElementById("swap-result");
+  if(!opts.length){
+    el.innerHTML=`<div class="opt-empty">這個組合沒有特別備案——照原行程走即可，或到「🏛️ 室內備案」挑一個順眼的。</div>`;
+    return;
+  }
+  el.innerHTML=opts.map(o=>`
+  <div class="opt-card">
+    <h3>${o.name}<span class="opt-tag">${o.tag}</span><span class="opt-tag" style="background:var(--cool-soft);color:var(--cool)">${SIT_LABEL[sit]}</span></h3>
+    <div class="opt-row"><span class="k">🚃 路線：</span><span>${o.route}</span></div>
+    <div class="opt-row"><span class="k">⏱️ 建議：</span><span>${o.stay}</span></div>
+    <div class="opt-next"><b>➡️ 下一步接法：</b>${o.next}</div>
+  </div>`).join("");
+}
+
+/* ================= 景點攻略 ================= */
+function renderGuides(){
+  const block=(title,ico,items,cls)=>items&&items.length?`
+    <div class="g-block ${cls||""}"><h4>${ico} ${title}</h4><ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul></div>`:"";
+  document.getElementById("guide-list").innerHTML=GUIDES.map((g,i)=>`
+  <details class="guide"${i===0?" open":""}>
+    <summary><span class="g-ico">${g.ico}</span>${g.name}<span class="g-sub">${g.sub}</span></summary>
+    <div class="g-body">
+      ${block("玩法攻略","🎯",g.how)}
+      ${block("門票＆優惠","💴",g.deal)}
+      ${block("期間限定","🎆",g.event,"hot-event")}
+      ${block("推薦必買","🛍️",g.buy)}
+      ${block("美食","🍜",g.food)}
+      ${block("親子＆推車","👶",g.kids,"kids")}
+    </div>
+  </details>`).join("");
+}
+
 /* ================= 逐日防暑表 ================= */
 function renderHeatTable(){
   document.getElementById("heat-table").innerHTML=
@@ -533,10 +790,10 @@ function renderPrint(){
   document.getElementById("print-area").innerHTML=`
   <div class="p-head">
     <h1>名古屋夏日之旅 9天8夜（防暑調整版）</h1>
-    <p>原則：戶外景點 9:00 開門即進場｜11:00–16:00 進室內或回飯店午休｜17:00 後戶外第二時段（日落約 19:00）</p>
+    <p>2大2小（6歲・7歲＋推車）｜原則：戶外景點 9:00 開門即進場｜11:00–16:00 室內或飯店午休｜17:00 後戶外第二時段（日落約 19:00）</p>
   </div>
   <table class="p-table">
-    <thead><tr><th style="width:7%">天</th><th style="width:16%">行程</th><th style="width:8%">熱度</th><th style="width:23%">上午 / 正午 / 傍晚</th><th style="width:14%">飯店</th><th style="width:16%">餐食</th><th style="width:16%">備案</th></tr></thead>
+    <thead><tr><th style="width:7%">天</th><th style="width:15%">行程</th><th style="width:8%">熱度</th><th style="width:24%">上午 / 正午 / 傍晚</th><th style="width:14%">飯店</th><th style="width:16%">餐食</th><th style="width:16%">備案</th></tr></thead>
     <tbody>${DAYS.map(d=>`<tr>
       <td><b>Day ${d.d}</b><br>${d.w}</td>
       <td><b>${d.title}</b></td>
@@ -550,18 +807,22 @@ function renderPrint(){
   <div class="p-cols">
     <div class="p-sec">
       <h2>防暑裝備清單</h2>
-      <ul><li>手持風扇＋涼感巾</li><li>鹽分補給糖（塩分タブレット）</li><li>遮陽傘／帽、防曬乳</li><li>每人水壺、涼感濕紙巾</li><li>降溫噴霧、替換衣物（小孩）</li></ul>
+      <ul><li>手持風扇＋涼感巾</li><li>推車：涼感墊＋夾式風扇＋透氣遮陽網（勿用毯子罩）</li><li>鹽分補給糖（塩分タブレット）</li><li>遮陽傘／帽、防曬乳</li><li>每人水壺、涼感濕紙巾、替換衣物</li></ul>
     </div>
     <div class="p-sec">
       <h2>中暑警訊</h2>
-      <ul><li>頭暈、噁心、臉紅不流汗、反應變慢</li><li>立刻進冷氣房，補水補鹽，脖子腋下降溫</li><li>意識不清 → 撥 119</li></ul>
+      <ul><li>頭暈、噁心、臉紅不流汗、反應變慢</li><li>小孩每 30 分鐘主動問＋摸後頸</li><li>立刻進冷氣房，補水補鹽，脖子腋下降溫</li><li>意識不清 → 撥 119</li></ul>
     </div>
     <div class="p-sec">
       <h2>室內備案速查</h2>
       <ul>${BACKUPS.slice(0,6).map(b=>`<li><b>${b.name}</b>（${b.where}）</li>`).join("")}</ul>
     </div>
+    <div class="p-sec">
+      <h2>2026 夏季限定活動</h2>
+      <ul><li><b>7/20</b> みなと祭花火（水族館前）</li><li><b>7/31–8/2</b> 世界コスプレサミット（綠洲21）</li><li><b>8/8–16</b> 名古屋城夏まつり（傍晚屋台＋盆踊り）</li><li><b>7/10–8/31</b> 樂高潑水祭</li><li><b>6/1–10/15</b> 犬山木曽川鵜飼（夜間納涼船）</li></ul>
+    </div>
   </div>
-  <div class="p-note">熱度標示：●○○○○ 涼爽 → ●●●●● 酷熱警戒。名古屋 7–8 月平均高溫 31–33°C、濕度 70–75%，近年常見 35°C+ 猛暑日，體感溫度常達 38°C 以上。</div>`;
+  <div class="p-note">熱度標示：●○○○○ 涼爽 → ●●●●● 酷熱警戒。名古屋 7–8 月平均高溫 31–33°C、濕度 70–75%，近年常見 35°C+ 猛暑日，體感常達 38°C 以上。優惠：ドニチエコきっぷ（週末假日＋每月8日，大人¥620/小孩¥310）名古屋城折¥100、水族館折¥200；樂高門票前一天以前網路買；名鐵犬山城下町きっぷ套票。</div>`;
 }
 
 /* ================= 分頁與檢視切換 ================= */
@@ -590,7 +851,7 @@ try{
   if(saved){const b=document.querySelector(`.view-switch button[data-view="${saved}"]`);if(b)b.click();}
 }catch(e){}
 
-renderCards();renderTimeline();renderTable();renderHeatTable();renderBackups();renderFoods();renderPrint();
+renderCards();renderTimeline();renderTable();renderSwap();renderGuides();renderHeatTable();renderBackups();renderFoods();renderPrint();
 </script>
 </body>
 </html>
