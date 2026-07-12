@@ -90,6 +90,8 @@ p.sec-sub{color:var(--ink-soft);font-size:.9rem;margin-bottom:18px}
 .tip-box b{color:var(--brand)}
 .backup-box{background:var(--cool-soft);border-left:4px solid var(--cool);border-radius:8px;padding:9px 12px;font-size:.83rem}
 .backup-box b{color:var(--cool)}
+.wx-box{background:#f0f9ff;border:1px dashed #7dd3fc;border-radius:8px;padding:7px 12px;font-size:.8rem;color:#0c4a6e;display:flex;flex-wrap:wrap;gap:4px 14px;font-weight:700}
+.wx-note{font-size:.8rem;color:var(--ink-soft)}
 
 /* ---------- Timeline view ---------- */
 .timeline{position:relative;padding-left:26px}
@@ -265,7 +267,7 @@ footer{border-top:1px solid var(--line);padding:26px 16px 40px;text-align:center
 <!-- ================= 每日行程 ================= -->
 <section class="panel active" id="panel-itinerary">
   <h2 class="sec-title"><span class="bar"></span>每日行程</h2>
-  <p class="sec-sub">依 Google 試算表「2026 最新版」整理。三種檢視：<b>卡片</b>看重點、<b>時間軸</b>看防暑節奏、<b>表格</b>總覽比對。</p>
+  <p class="sec-sub">依 Google 試算表「2026 最新版」整理。三種檢視：<b>卡片</b>看重點、<b>時間軸</b>看防暑節奏、<b>表格</b>總覽比對。<br><span class="wx-note" id="wx-note"></span></p>
   <div class="view-switch" role="tablist">
     <button class="active" data-view="cards">🗂️ 卡片</button>
     <button data-view="timeline">🕘 時間軸</button>
@@ -637,6 +639,53 @@ b787:`<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" preserveAspe
 const HEAT_LABEL={1:"🧊 涼爽",2:"🌤️ 溫和",3:"☀️ 偏熱",4:"🔥 高溫注意",5:"🥵 酷熱警戒"};
 const SIT_LABEL={hot:"🥵 太熱",rain:"🌧️ 下雨",tired:"😴 沒電",time:"⏰ 多出時間"};
 
+/* ================= 天氣預報（Open-Meteo・名古屋） ================= */
+/* 頁面開啟時自動更新；抓不到網路時顯示 7/12 快照 */
+const WX_URL="https://api.open-meteo.com/v1/forecast?latitude=35.1815&longitude=136.9066&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunset,weathercode&hourly=precipitation_probability&timezone=Asia%2FTokyo&start_date=2026-07-15&end_date=2026-07-22";
+let WEATHER={
+"7/15":{lo:25,hi:36,pop:35,win:null,sunset:"19:07",code:53},
+"7/16":{lo:27,hi:37,pop:39,win:null,sunset:"19:06",code:51},
+"7/17":{lo:27,hi:37,pop:68,win:"11–20時",sunset:"19:06",code:51},
+"7/18":{lo:27,hi:34,pop:69,win:"10–21時",sunset:"19:05",code:51},
+"7/19":{lo:27,hi:35,pop:67,win:"11–21時",sunset:"19:05",code:51},
+"7/20":{lo:27,hi:35,pop:57,win:"13–21時",sunset:"19:04",code:51},
+"7/21":{lo:26,hi:34,pop:37,win:null,sunset:"19:04",code:95},
+"7/22":{lo:25,hi:36,pop:26,win:null,sunset:"19:03",code:51}
+};
+let WX_SRC="7/12 預報快照（開啟網頁時會自動更新）";
+const WX_ICON=c=>c>=95?"⛈️":c>=61?"🌧️":c>=51?"🌦️":c>=45?"🌫️":c>=3?"☁️":c>=1?"⛅":"☀️";
+function wxLine(d){
+  const w=WEATHER[d.date];if(!w)return "";
+  return `<div class="wx-box"><span>${WX_ICON(w.code)} ${w.lo}–${w.hi}°C</span><span>☔ ${w.pop}%${w.win?`（${w.win}留意陣雨）`:""}</span><span>🌇 日落 ${w.sunset}</span></div>`;
+}
+function updateWxNote(){
+  const el=document.getElementById("wx-note");
+  if(el)el.innerHTML=`🌤️ 天氣預報：<b>${WX_SRC}</b>｜資料來源 Open-Meteo（名古屋）｜☔ 為當日最高降雨機率，括號內是需留意陣雨的時段`;
+}
+async function fetchWeather(){
+  try{
+    const r=await fetch(WX_URL);if(!r.ok)return;
+    const j=await r.json();
+    const out={};
+    j.daily.time.forEach((t,i)=>{
+      const key=(+t.slice(5,7))+"/"+(+t.slice(8,10));
+      const probs={};
+      j.hourly.time.forEach((ht,hi)=>{if(ht.startsWith(t))probs[+ht.slice(11,13)]=j.hourly.precipitation_probability[hi];});
+      let f=null,l=null;
+      for(let h=7;h<=21;h++){if((probs[h]||0)>=40){if(f===null)f=h;l=h;}}
+      out[key]={lo:Math.round(j.daily.temperature_2m_min[i]),hi:Math.round(j.daily.temperature_2m_max[i]),
+        pop:j.daily.precipitation_probability_max[i],sunset:j.daily.sunset[i].slice(11,16),
+        code:j.daily.weathercode[i],win:f===null?null:`${f}–${l+1}時`};
+    });
+    if(Object.keys(out).length){
+      WEATHER=out;
+      const n=new Date();
+      WX_SRC=`已自動更新（${n.getMonth()+1}/${n.getDate()} ${String(n.getHours()).padStart(2,"0")}:${String(n.getMinutes()).padStart(2,"0")}）`;
+      renderCards();renderTimeline();renderTable();renderPrint();updateWxNote();
+    }
+  }catch(e){/* 離線時沿用快照 */}
+}
+
 /* ================= 卡片檢視 ================= */
 function renderCards(){
   const el=document.getElementById("view-cards");
@@ -654,6 +703,7 @@ function renderCards(){
         <div class="meta-row"><span class="ico">🍜</span><span>${d.meals}</span></div>
         <div class="meta-row"><span class="ico">🚃</span><span>${d.traffic}</span></div>
       </div>
+      ${wxLine(d)}
       <div class="tip-box"><b>防暑重點：</b>${d.tip}</div>
       <div class="backup-box"><b>備案：</b>${d.backup}</div>
     </div>
@@ -676,6 +726,7 @@ function renderTimeline(){
         <div class="slot noon"><div class="slot-t">🥵 正午（11–16時避暑）</div>${d.noon}</div>
         <div class="slot evening"><div class="slot-t">🌆 傍晚（17時後）</div>${d.evening}</div>
       </div>
+      <div style="margin-top:10px">${wxLine(d)}</div>
       <div class="tl-foot">🏨 ${d.hotel}　｜　🚃 ${d.traffic}</div>
     </div>
   </div>`).join("")+"</div>";
@@ -685,12 +736,13 @@ function renderTimeline(){
 function renderTable(){
   const el=document.getElementById("view-table");
   el.innerHTML=`<div class="table-wrap"><table class="trip">
-  <thead><tr><th>天</th><th>主要行程</th><th>熱度</th><th>飯店</th><th>餐食</th><th>交通</th><th>防暑重點</th><th>備案</th></tr></thead>
+  <thead><tr><th>天</th><th>主要行程</th><th>熱度</th><th>天氣預報</th><th>飯店</th><th>餐食</th><th>交通</th><th>防暑重點</th><th>備案</th></tr></thead>
   <tbody>${DAYS.map(d=>`
     <tr>
       <td class="day-cell">Day ${d.d}<br><span style="font-weight:400;color:var(--ink-soft)">${d.date} ${d.w}</span></td>
       <td><b>${d.title}</b><br>${d.spot}</td>
       <td><span class="heat h${d.heat}">${HEAT_LABEL[d.heat]}</span></td>
+      <td style="white-space:nowrap">${(w=>w?`${WX_ICON(w.code)} ${w.lo}–${w.hi}°C<br>☔ ${w.pop}%${w.win?`<br><span style="font-size:.78rem">${w.win}留意</span>`:""}<br>🌇 ${w.sunset}`:"—")(WEATHER[d.date])}</td>
       <td>${d.hotel}</td>
       <td>${d.meals}</td>
       <td>${d.traffic}</td>
@@ -782,7 +834,7 @@ function renderPrint(){
     <thead><tr><th style="width:8%">天</th><th style="width:14%">行程</th><th style="width:7%">熱度</th><th style="width:25%">上午 / 正午 / 傍晚</th><th style="width:13%">飯店</th><th style="width:17%">餐食</th><th style="width:16%">備案</th></tr></thead>
     <tbody>${DAYS.map(d=>`<tr>
       <td><b>Day ${d.d}</b><br>${d.date}<br>${d.w}</td>
-      <td><b>${d.title}</b></td>
+      <td><b>${d.title}</b>${(w=>w?`<br>${WX_ICON(w.code)} ${w.lo}–${w.hi}°<br>☔${w.pop}%${w.win?`(${w.win})`:""}<br>🌇${w.sunset}`:"")(WEATHER[d.date])}</td>
       <td>${"●".repeat(d.heat)}${"○".repeat(5-d.heat)}</td>
       <td>🌅 ${d.morning}<br>🥵 ${d.noon}<br>🌆 ${d.evening}</td>
       <td>${d.hotel}</td>
@@ -808,7 +860,7 @@ function renderPrint(){
       <ul><li><b>7/20（海之日）</b> みなと祭花火 約 3000 發（名古屋港 19:30 前後，名港線直達）</li><li><b>7/10–8/31</b> 樂高潑水祭 Water Maze</li><li><b>7/17–19 前後</b> 豐橋祇園祭手筒花火（名鐵約 50 分）</li><li>科學館夏季特別展（現場確認）</li></ul>
     </div>
   </div>
-  <div class="p-note">熱度標示：●○○○○ 涼爽 → ●●●●● 酷熱警戒。名古屋 7 月平均高溫 31°C、濕度 70–75%，近年常見 35°C+ 猛暑日，體感常達 38°C 以上。優惠：ドニチエコきっぷ（7/18六・7/19日・7/20祝可用，大人¥620/小孩¥310）科學館等有折扣；科學館・樂高以外多數景點國中/國小以下減免。</div>`;
+  <div class="p-note">天氣欄為 Open-Meteo 名古屋預報（以列印當下最後更新為準；☔ 為當日最高降雨機率，括號為留意陣雨時段）。熱度標示：●○○○○ 涼爽 → ●●●●● 酷熱警戒。名古屋 7 月平均高溫 31°C、濕度 70–75%，近年常見 35°C+ 猛暑日，體感常達 38°C 以上。優惠：ドニチエコきっぷ（7/18六・7/19日・7/20祝可用，大人¥620/小孩¥310）科學館等有折扣；科學館・樂高以外多數景點國中/國小以下減免。</div>`;
 }
 
 /* ================= 分頁與檢視切換 ================= */
@@ -838,6 +890,7 @@ try{
 }catch(e){}
 
 renderCards();renderTimeline();renderTable();renderSwap();renderGuides();renderHeatTable();renderBackups();renderFoods();renderPrint();
+updateWxNote();fetchWeather();
 </script>
 </body>
 </html>
